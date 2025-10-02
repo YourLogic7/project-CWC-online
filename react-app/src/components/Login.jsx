@@ -50,7 +50,7 @@ function Login({ onLogin }) {
             </div>
           </div>
 
-          <button className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2.5 rounded-lg transition-colors mt-8 !important" type="submit">
+          <button className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2.5 rounded-lg transition-colors" style={{ marginTop: '32px' }} type="submit">
             Sign In
           </button>
         </form>
