@@ -43,7 +43,7 @@ function Register({ onRegister }) {
             />
           </div>
 
-          <button className="w-full bg-indigo-600 hover:bg-indigo-800 text-white font-medium py-2.5 rounded-lg transition-colors mt-8">
+          <button className="w-full bg-indigo-600 hover:bg-indigo-800 text-white font-medium py-2.5 rounded-lg transition-colors mt-10">
             Register
           </button>
         </form>
