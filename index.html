@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>generator updatan biar mudah</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1 id="judul-di-luhur">Generator Updatan</h1>
+        <form id="myForm">
+        <label for="perner">Perner loe:</label>
+        <input type="text" id="perner" name="perner" placeholder="isi perner loe..."><hr><br>
+
+    <section id="headline-layanan">
+        <div>
+            <label for="headline">Headline Tiket:</label>
+            <input type="text" id="headline" name="headline" placeholder="Isi headline coy...">
+        </div>
+        <div>
+            <label for="layanan">No Layanan:</label>
+            <input type="text" id="layanan" name="layanan" placeholder="contoh: 11234224543"><br>
+        </div>
+    </section>
+
+    <section id="tiket-data">
+        <div id="tiket">
+            <label for="dsc">Tiket DSC / Tiket INSERA:</label>
+            <input type="text" id="dsc" name="dsc" placeholder="contoh: 1-MPX1P09">
+
+            <label for="insera"></label>
+            <input type="text" id="insera" name="insera" placeholder="contoh: INC52312445"><br><br>
+        </div>
+
+        <div id="data">
+        <label for="pelanggan">Nama Pelanggan / No CP:</label>
+            <input type="text" id="pelanggan" name="pelanggan" placeholder="Contoh: Rijal Indra Kurnaedi">
+            <label for="cp"></label>
+            <input type="text" id="cp" name="cp" placeholder="contoh: 082xxxxxxxxx"><br><br>
+        
+        </div>
+    </section>
+    <hr>
+    <section id="resume-report">
+        <div>
+        <label for="resume">Resume Case:</label>
+        <input type="text" id="resume" name="resume"placeholder="Isi resume case nya coy.."><br><br>
+        </div>
+        <div>
+        <label for="alamat">Report Date:</label>
+        <input type="text" id="alamat" name="alamat" placeholder="contoh: Jl. in aja dlu jaksel"><br><br>
+        </div>
+    </section>
+    <section id="pengecekan-jabatan">
+        <div>
+            <label for="pengecekan">Hasil Pengecekan:</label>
+            <textarea id="pengecekan" name="pengecekan" placeholder="contoh: cek DSC permintaan PI dll." rows="6" cols="50"></textarea><br><br>
+        </div>
+        <div>
+            <label for="jabatan">Jabatan Solver:</label>
+            <input type="text" id="jabatan" name="jabatan" placeholder="kalo gak kordinasi gausah di isi yaaa...">
+            <p style="font-size: 15px; color: red;" id="tulisan">*contoh: TIFF HD DISTRICT JAKSEL, HSA JAKSEL, Korlap JAKSEL, dst. <br>(Kosongkan jika tidak kordinasi)</p>
+        </div>
+    </section> 
+    <section>
+        <input type="radio" id="via-grup" name="grup" value="via-grup"> 
+        <label for="grup">Via grup:</label><br>
+        <hr>
+        <!-- Pilihan Radio Button -->
+
+
+        <div>
+            <h4>Info Update Solver:</h4>
+            <input type="radio" id="radioBiasa" name="pilihan" value="radioBiasa" checked>
+            <label for="radioBiasa">No Respon</label>
+        </div>
+
+        <div>
+            <input type="radio" id="radioTextbox" name="pilihan" value="radioTextbox">
+            <label for="radioTextbox">Respon</label>
+        </div>
+
+        <div>
+            <input type="radio" id="tanpa-kordinasi" name="pilihan" value="tanpa-kordinasi" >
+            <label for="tanpa-kordinasi">Tanpa Kordinasi</label>
+        </div>
+        <br>
+    
+        <!-- Kotak Teks Tambahan -->
+        <div id="textboxContainer" style="display: none;">
+            <label for="inputUser">Info Tambahan:</label>
+            <textarea id="inputUser" name="inputUser" placeholder="isi dengan info tambahan misal: info solver atau info tanpa kordinasinya kenapa" rows="4" cols="50"></textarea>
+        </div>
+    </section>
+    <hr>
+    <section id="carring-jam">
+        <div>
+            <label for="carring">Hasil Carring:</label>
+            <input type="text" id="carring" name="carring" placeholder="contoh: RNA 3x atau terhubung dengan pelanggan, acc close"><br><br>
+        </div>
+        <div>
+            <label for="jam">Jam Carring:</label>
+            <input type="text" id="jam" name="jam" placeholder="isi jam Carring nya yaa kakak.."><br><br>
+        </div>
+    </section>
+    
+        <!-- tombol hasil braddder -->
+        <label for="pesan">Sok Pencet Daks:</label>
+        <button type="button" id="generator-updatan" onclick="tampilkanData()">Sulap</button>
+
+        <!-- untuk copy text -->
+        <button id="copyAll" onclick="myFunction()" style="display: none;" clicked>Salin Teks :)</button>
+        </form>
+
+        <div id="hasil-texbox" style="display: none;"></div>
+        <span for="hasil-akhir" id="hasil-akhir-kordinasi" style="display: none;">
+            <div id="hasil-dsc"></div>
+            <div id="hasil-insera"></div>
+        </span>
+
+        <span for="hasil-akhir" id="hasil-akhir-tanpa-kordinasi" style="display: none;">
+            <div id="hasil-tanpa-kordinasi-dsc"></div>
+            <div id="hasil-tanpa-kordinasi-insera"></div>
+        </span>
+
+  <script src="script.js"></script>
+</body>
+<footer>
+    <span>&copy; 2025 develop with Heart by TL SENIOR. All rights reserved.</span>
+</footer>
+</html>

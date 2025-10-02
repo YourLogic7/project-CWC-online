@@ -1,0 +1,98 @@
+body{
+    font-family: 'Pixelify Sans', sans-serif;
+    color: rgb(104, 238, 193);
+    background-color: #221f1f;
+    margin: 0;
+    padding: 20px;
+    
+}
+
+#perner, #headline, #dsc, #insera, #pelanggan, #cp, #layanan, #resume, #alamat, #pengecekan, #jabatan, #textboxContainer, #carring, #jam {
+    display: block;
+    width: 300px;
+    padding: 8px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    border-radius: 4px;
+    background-color: #2c2a2a;
+    color: white;
+}
+
+#headline-layanan {
+    display: flex;
+    
+
+}
+
+#tiket-data {
+    display: flex;
+    
+
+}
+
+#resume-report {
+    display: flex;
+    
+
+}
+
+#pengecekan-jabatan {
+    display: flex;
+    
+
+}
+
+#carring-jam{
+    display: flex;
+    
+}
+
+#inputUser{
+    width: 280px;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #2c2a2a;
+    color: white;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+label[for="radioTextbox"], label[for="radioBiasa"], label[for="tanpa-kordinasi"] {
+    display: inline;
+    margin-top: 10px;
+}
+
+label[for="grup"] {
+    display: inline;
+    margin-top: 10px;
+}
+
+button {
+    font-family: 'Pixelify Sans', sans-serif;
+    font-size: 15px;
+    background-color: #7fddee;
+    color: rgb(22, 22, 22);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#copyAll {
+    display: inline-block;
+    margin-top: 5px;
+}
+
+footer {
+    font-family: 'Pixelify Sans', sans-serif;
+    color: rgb(202, 44, 44);
+    background-color: rgb(104, 238, 193);
+    margin-top: 60px;
+    text-align: right;
+    font-size: 20px;
+}
