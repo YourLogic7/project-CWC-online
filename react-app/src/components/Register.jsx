@@ -18,7 +18,7 @@ function Register({ onRegister }) {
             <label className="block text-sm font-medium text-gray-700 mb-3" htmlFor="username">Username</label>
             <input 
               type="text" 
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
+              className="w-full h-10 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
               placeholder="Your Username"
               id="username"
             />
@@ -27,7 +27,7 @@ function Register({ onRegister }) {
             <label className="block text-sm font-medium text-gray-700 mb-3" htmlFor="email">Email</label>
             <input 
               type="email" 
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
+              className="w-full h-10 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
               placeholder="your@email.com"
               id="email"
             />
@@ -37,7 +37,7 @@ function Register({ onRegister }) {
             <label className="block text-sm font-medium text-gray-700 mb-3" htmlFor="password">Password</label>
             <input 
               type="password" 
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
+              className="w-full h-10 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
               placeholder="••••••••"
               id="password"
             />

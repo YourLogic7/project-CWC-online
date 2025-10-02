@@ -18,17 +18,17 @@ function Login({ onLogin }) {
             <label className="block text-sm font-medium text-gray-700 mb-3" htmlFor="email">Email</label>
             <input 
               type="email" 
-              className="w-full h-md px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
+              className="w-full h-10 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
               placeholder="your@email.com"
               id="email"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-3" htmlFor="password">Password</label>
+            <label className="block text-sm font-medium text-white-700 mb-3" htmlFor="password">Password</label>
             <input 
               type="password" 
-              className="w-full h-md px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
+              className="w-full h-10 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
               placeholder="••••••••"
               id="password"
             />
@@ -39,7 +39,7 @@ function Login({ onLogin }) {
               <input type="checkbox" className="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"/>
               <span className="ml-2 text-sm text-gray-700">Remember me</span>
             </label>
-            <a href="#" className="text-sm text-indigo-600 hover:text-indigo-500">Forgot password?</a>
+            <a href="#" className="text-sm text-gray-700 hover:text-indigo-500">Forgot password?</a>
           </div>
 
           <button className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2.5 rounded-lg transition-colors" type="submit">
@@ -47,9 +47,9 @@ function Login({ onLogin }) {
           </button>
         </form>
 
-        <div className="mt-6 text-center text-sm text-gray-600">
+        <div className="mt-6 text-center text-sm text-white-600">
           Don't have an account? 
-          <Link to="/register" className="text-indigo-600 hover:text-indigo-500 font-medium">Sign up</Link>
+          <Link to="/register" className="text-gray-600 hover:text-indigo-500 font-medium">Sign up</Link>
         </div>
       </div>
     </div>
