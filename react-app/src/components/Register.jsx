@@ -10,7 +10,7 @@ function Register({ onRegister }) {
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
-      <div className="max-w-md w-full bg-white rounded-xl shadow-lg p-10">
+      <div className="max-w-md bg-white rounded-xl shadow-lg p-10">
         <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Sign Up</h2>
         
         <form className="space-y-4" onSubmit={handleSubmit}>
