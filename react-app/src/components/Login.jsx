@@ -13,36 +13,36 @@ function Login({ onLogin }) {
       <div className="max-w-md bg-white rounded-xl shadow-lg p-10">
         <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Sign In</h2>
         
-        <form className="space-y-4" onSubmit={handleSubmit}>
-          <div>
+        <form onSubmit={handleSubmit}>
+          <div className="mb-4">
             <label className="block text-sm font-medium text-gray-700 mb-3" htmlFor="email">Email</label>
             <input 
               type="email" 
-              className="w-full h-10 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
               placeholder="your@email.com"
               id="email"
             />
           </div>
 
-          <div>
-            <label className="block text-sm font-medium text-white-700 mb-3" htmlFor="password">Password</label>
+          <div className="mb-4">
+            <label className="block text-sm font-medium text-gray-700 mb-3" htmlFor="password">Password</label>
             <input 
               type="password" 
-              className="w-full h-10 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
               placeholder="••••••••"
               id="password"
             />
           </div>
 
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between mb-4">
             <label className="flex items-center">
               <input type="checkbox" className="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"/>
-              <span className="ml-2 text-sm text-gray-700">Remember me</span>
+              <span className="ml-2 text-sm text-gray-600">Remember me</span>
             </label>
-            <a href="#" className="text-sm text-gray-700 hover:text-indigo-500">Forgot password?</a>
+            <a href="#" className="text-sm text-indigo-600 hover:text-indigo-500">Forgot password?</a>
           </div>
 
-          <button className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2.5 rounded-lg transition-colors" type="submit">
+          <button className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2.5 rounded-lg transition-colors mt-8" type="submit">
             Sign In
           </button>
         </form>

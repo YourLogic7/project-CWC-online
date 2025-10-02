@@ -13,8 +13,8 @@ function Register({ onRegister }) {
       <div className="max-w-md bg-white rounded-xl shadow-lg p-10">
         <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Sign Up</h2>
         
-        <form className="space-y-4" onSubmit={handleSubmit}>
-          <div>
+        <form onSubmit={handleSubmit}>
+          <div className="mb-4">
             <label className="block text-sm font-medium text-gray-700 mb-3" htmlFor="username">Username</label>
             <input 
               type="text" 
@@ -23,7 +23,7 @@ function Register({ onRegister }) {
               id="username"
             />
           </div>
-          <div>
+          <div className="mb-4">
             <label className="block text-sm font-medium text-gray-700 mb-3" htmlFor="email">Email</label>
             <input 
               type="email" 
@@ -33,7 +33,7 @@ function Register({ onRegister }) {
             />
           </div>
 
-          <div>
+          <div className="mb-4">
             <label className="block text-sm font-medium text-gray-700 mb-3" htmlFor="password">Password</label>
             <input 
               type="password" 
@@ -43,7 +43,7 @@ function Register({ onRegister }) {
             />
           </div>
 
-          <button className="w-full mx-5 bg-indigo-600 hover:bg-indigo-800 text-white font-medium py-2.5 rounded-lg transition-colors mt-4">
+          <button className="w-full mx-5 bg-indigo-600 hover:bg-indigo-800 text-white font-medium py-2.5 rounded-lg transition-colors mt-8">
             Register
           </button>
         </form>
