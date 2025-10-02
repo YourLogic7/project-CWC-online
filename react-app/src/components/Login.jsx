@@ -43,7 +43,7 @@ function Login({ onLogin }) {
               <button
                 type="button"
                 onClick={togglePasswordVisibility}
-                className="absolute top-1/2 -translate-y-1/2 left-0 pl-2 flex items-center text-gray-600"
+                className="absolute top-1/2 -translate-y-1/2 left-0 flex items-center text-gray-600"
               >
                 {showPassword ? <FaEyeSlash /> : <FaEye />}
               </button>
