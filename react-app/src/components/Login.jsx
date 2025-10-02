@@ -36,14 +36,14 @@ function Login({ onLogin }) {
             <div className="relative">
               <input 
                 type={showPassword ? "text" : "password"} 
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all pr-10"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all pl-10"
                 placeholder="••••••••"
                 id="password"
               />
               <button
                 type="button"
                 onClick={togglePasswordVisibility}
-                className="absolute top-1/2 -translate-y-1/2 right-0 pr-2 flex items-center text-gray-600"
+                className="absolute top-1/2 -translate-y-1/2 left-0 pl-2 flex items-center text-gray-600"
               >
                 {showPassword ? <FaEyeSlash /> : <FaEye />}
               </button>
