@@ -18,7 +18,7 @@ function Login({ onLogin }) {
             <label className="block text-sm font-medium text-gray-700 mb-3" htmlFor="email">Email</label>
             <input 
               type="email" 
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
+              className="w-full h-md px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
               placeholder="your@email.com"
               id="email"
             />
@@ -28,7 +28,7 @@ function Login({ onLogin }) {
             <label className="block text-sm font-medium text-gray-700 mb-3" htmlFor="password">Password</label>
             <input 
               type="password" 
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
+              className="w-full h-md px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
               placeholder="••••••••"
               id="password"
             />
@@ -37,7 +37,7 @@ function Login({ onLogin }) {
           <div className="flex items-center justify-between">
             <label className="flex items-center">
               <input type="checkbox" className="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"/>
-              <span className="ml-2 text-sm text-gray-600">Remember me</span>
+              <span className="ml-2 text-sm text-gray-700">Remember me</span>
             </label>
             <a href="#" className="text-sm text-indigo-600 hover:text-indigo-500">Forgot password?</a>
           </div>
