@@ -22,32 +22,30 @@ function Login({ onLogin }) {
         
         <form className="space-y-4" onSubmit={handleSubmit}>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2" htmlFor="email">Email</label>
+            <label className="block text-sm font-medium text-gray-700 mb-3" htmlFor="email">Email</label>
             <input 
               type="email" 
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
               placeholder="your@email.com"
               id="email"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2" htmlFor="password">Password</label>
-            <div className="relative">
-              <input 
-                type={showPassword ? "text" : "password"} 
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all pl-10"
-                placeholder="••••••••"
-                id="password"
-              />
-              <button
-                type="button"
-                onClick={togglePasswordVisibility}
-                className="absolute top-1/2 -translate-y-1/2 left-0 flex items-center text-gray-600"
-              >
-                {showPassword ? <FaEyeSlash /> : <FaEye />}
-              </button>
-            </div>
+            <label className="block text-sm font-medium text-gray-700 mb-3" htmlFor="password">Password</label>
+            <input 
+              type={showPassword ? "text" : "password"} 
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all pl-10"
+              placeholder="••••••••"
+              id="password"
+            />
+            <button
+              type="button"
+              onClick={togglePasswordVisibility}
+              className="mt-1 text-sm text-gray-600 flex items-center"
+            >
+              {showPassword ? <FaEyeSlash className="mr-1" /> : <FaEye className="mr-1" />} {showPassword ? 'Hide Password' : 'Show Password'}
+            </button>
           </div>
 
           <div className="flex items-center justify-between">
