@@ -16,28 +16,29 @@ function Login({ onLogin }) {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-900">
-      <div className="bg-white p-10 rounded-lg shadow-xl max-w-xl">
-        <h2 className="text-3xl font-bold mb-2 text-center text-gray-800">Welcome Back</h2>
-        <p className="text-center text-gray-600 mb-6">Login to your account</p>
-        <form onSubmit={handleSubmit}>
-          <div className="mb-6">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">Email</label>
-            <input
-              className="border-b-2 border-gray-300 bg-transparent w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 placeholder-gray-500"
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
+      <div className="max-w-xl w-full bg-white rounded-xl shadow-lg p-8">
+        <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Sign In</h2>
+        
+        <form className="space-y-4" onSubmit={handleSubmit}>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1" htmlFor="email">Email</label>
+            <input 
+              type="email" 
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
+              placeholder="your@email.com"
               id="email"
-              type="email"
-              placeholder="Email"
             />
           </div>
-          <div className="mb-8">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">Password</label>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1" htmlFor="password">Password</label>
             <div className="relative">
-              <input
-                className="border-b-2 border-gray-300 bg-transparent w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 placeholder-gray-500 pr-10"
+              <input 
+                type={showPassword ? "text" : "password"} 
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all pr-10"
+                placeholder="••••••••"
                 id="password"
-                type={showPassword ? "text" : "password"}
-                placeholder="********"
               />
               <button
                 type="button"
@@ -48,18 +49,24 @@ function Login({ onLogin }) {
               </button>
             </div>
           </div>
-          <div className="flex items-center justify-between mb-8">
-            <button
-              className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline w-full"
-              type="submit"
-            >
-              Login
-            </button>
+
+          <div className="flex items-center justify-between">
+            <label className="flex items-center">
+              <input type="checkbox" className="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"/>
+              <span className="ml-2 text-sm text-gray-600">Remember me</span>
+            </label>
+            <a href="#" className="text-sm text-indigo-600 hover:text-indigo-500">Forgot password?</a>
           </div>
+
+          <button className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2.5 rounded-lg transition-colors">
+            Sign In
+          </button>
         </form>
-        <p className="mt-6 text-center text-gray-600">
-          Belum punya akun? <Link to="/register" className="text-blue-600 hover:text-blue-800">Daftar</Link>
-        </p>
+
+        <div className="mt-6 text-center text-sm text-gray-600">
+          Don't have an account? 
+          <Link to="/register" className="text-indigo-600 hover:text-indigo-500 font-medium">Sign up</Link>
+        </div>
       </div>
     </div>
   );

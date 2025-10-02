@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Register({ onRegister }) {
   const handleSubmit = (e) => {
@@ -8,47 +9,49 @@ function Register({ onRegister }) {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-900">
-      <div className="bg-white p-10 rounded-lg shadow-xl max-w-xl">
-        <h2 className="text-3xl font-bold mb-2 text-center text-gray-800">Create Account</h2>
-        <p className="text-center text-gray-600 mb-6">Register to get started</p>
-        <form onSubmit={handleSubmit}>
-          <div className="mb-6">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">Username</label>
-            <input
-              className="border-b-2 border-gray-300 bg-transparent w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 placeholder-gray-500"
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
+      <div className="max-w-xl w-full bg-white rounded-xl shadow-lg p-8">
+        <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Sign Up</h2>
+        
+        <form className="space-y-4" onSubmit={handleSubmit}>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1" htmlFor="username">Username</label>
+            <input 
+              type="text" 
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
+              placeholder="Your Username"
               id="username"
-              type="text"
-              placeholder="Username"
             />
           </div>
-          <div className="mb-6">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">Email</label>
-            <input
-              className="border-b-2 border-gray-300 bg-transparent w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 placeholder-gray-500"
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1" htmlFor="email">Email</label>
+            <input 
+              type="email" 
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
+              placeholder="your@email.com"
               id="email"
-              type="email"
-              placeholder="Email"
             />
           </div>
-          <div className="mb-8">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">Password</label>
-            <input
-              className="border-b-2 border-gray-300 bg-transparent w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 placeholder-gray-500"
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1" htmlFor="password">Password</label>
+            <input 
+              type="password" 
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
+              placeholder="••••••••"
               id="password"
-              type="password"
-              placeholder="********"
             />
           </div>
-          <div className="flex items-center justify-between mb-8">
-            <button
-              className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline w-full"
-              type="submit"
-            >
-              Register
-            </button>
-          </div>
+
+          <button className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2.5 rounded-lg transition-colors">
+            Register
+          </button>
         </form>
+
+        <div className="mt-6 text-center text-sm text-gray-600">
+          Already have an account? 
+          <Link to="/login" className="text-indigo-600 hover:text-indigo-500 font-medium">Sign In</Link>
+        </div>
       </div>
     </div>
   );
