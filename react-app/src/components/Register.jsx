@@ -1,10 +1,16 @@
 import React from 'react';
 
-function Register() {
+function Register({ onRegister }) {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // a real app would have actual registration logic
+    onRegister();
+  };
+
   return (
     <div>
       <h2>Register</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div>
           <label>Username</label>
           <input type="text" />

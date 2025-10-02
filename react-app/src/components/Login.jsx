@@ -1,10 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-function Login() {
+function Login({ onLogin }) {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // a real app would have actual login logic
+    onLogin();
+  };
+
   return (
     <div>
       <h2>Login</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div>
           <label>Email</label>
           <input type="email" />
@@ -15,6 +22,9 @@ function Login() {
         </div>
         <button type="submit">Login</button>
       </form>
+      <p>
+        Belum punya akun? <Link to="/register">Daftar</Link>
+      </p>
     </div>
   );
 }
