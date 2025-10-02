@@ -18,7 +18,7 @@ function Register({ onRegister }) {
             <label className="block text-sm font-medium text-gray-700 mb-3" htmlFor="username">Username</label>
             <input 
               type="text" 
-              className="w-full px-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all" style={{ paddingTop: '20px', paddingBottom: '20px' }}
+              className="w-full px-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all" style={{ paddingTop: '15px', paddingBottom: '15px' }}
               placeholder="Your Username"
               id="username"
             />
@@ -27,7 +27,7 @@ function Register({ onRegister }) {
             <label className="block text-sm font-medium text-gray-700 mb-3" htmlFor="email">Email</label>
             <input 
               type="email" 
-              className="w-full px-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all" style={{ paddingTop: '20px', paddingBottom: '20px' }}
+              className="w-full px-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all" style={{ paddingTop: '15px', paddingBottom: '15px' }}
               placeholder="your@email.com"
               id="email"
             />
@@ -37,13 +37,13 @@ function Register({ onRegister }) {
             <label className="block text-sm font-medium text-gray-700 mb-3" htmlFor="password">Password</label>
             <input 
               type="password" 
-              className="w-full px-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all" style={{ paddingTop: '20px', paddingBottom: '20px' }}
+              className="w-full px-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all" style={{ paddingTop: '15px', paddingBottom: '15px' }}
               placeholder="••••••••"
               id="password"
             />
           </div>
 
-          <button className="w-full bg-indigo-600 hover:bg-indigo-800 text-white font-medium py-2.5 rounded-lg transition-colors mt-10">
+          <button className="w-full bg-indigo-600 hover:bg-indigo-800 text-white font-medium py-2.5 rounded-lg transition-colors mt-8">
             Register
           </button>
         </form>

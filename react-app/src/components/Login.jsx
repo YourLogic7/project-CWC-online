@@ -22,42 +22,42 @@ function Login({ onLogin }) {
         
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700 mb-3" htmlFor="email">Email</label>
+            <label className="block text-sm font-medium text-gray-700 mb-3" style={{marginBottom: '4px'}} htmlFor="email">Email</label>
             <input 
               type="email" 
-              className="w-full px-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all" style={{ paddingTop: '20px', paddingBottom: '20px' }}
+              className="w-full px-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all" style={{ paddingTop: '15px', paddingBottom: '15px', marginBottom: '4px' }}
               placeholder="your@email.com"
               id="email"
             />
           </div>
 
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700 mb-3" htmlFor="password">Password</label>
+            <label className="block text-sm font-medium text-gray-700 mb-3" style={{marginBottom: '4px'}} htmlFor="password">Password</label>
             <div className="relative">
               <input 
                 type={showPassword ? "text" : "password"} 
-                className="w-full px-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all pr-10" style={{ paddingTop: '20px', paddingBottom: '20px' }}
+                className="w-full px-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all pr-10" style={{ paddingTop: '15px', paddingBottom: '15px', margin: '4px' }}
                 placeholder="••••••••"
                 id="password"
               />
               <button
                 type="button"
                 onClick={togglePasswordVisibility}
-                className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-600"
+                className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-600" style={{marginBottom: '4px', paddingTop: '5px', paddingBottom: '5px'}}
               >
                 {showPassword ? <FaEyeSlash /> : <FaEye />}
               </button>
             </div>
           </div>
 
-          <button className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2.5 rounded-lg transition-colors mt-10" type="submit">
+          <button className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2.5 rounded-lg transition-colors mt-10" style={{marginBottom: '4px'}} type="submit">
             Sign In
           </button>
         </form>
 
-        <div className="mt-6 text-center text-sm text-gray-600">
+        <div className="mt-6 text-center text-sm text-gray-600" style={{marginBottom: '4px', marginTop: '4px'}}>
           Don't have an account? 
-          <Link to="/register" className="text-indigo-600 hover:text-indigo-500 font-medium">Sign up</Link>
+          <Link to="/register" className="text-indigo-600 hover:text-indigo-500 font-medium" style={{color: "rgb(145, 238, 207)"}}>Sign up</Link>
         </div>
       </div>
     </div>
