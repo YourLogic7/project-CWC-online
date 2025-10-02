@@ -15,7 +15,7 @@ function Register({ onRegister }) {
         
         <form className="space-y-4" onSubmit={handleSubmit}>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1" htmlFor="username">Username</label>
+            <label className="block text-sm font-medium text-gray-700 mb-2" htmlFor="username">Username</label>
             <input 
               type="text" 
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
@@ -24,7 +24,7 @@ function Register({ onRegister }) {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1" htmlFor="email">Email</label>
+            <label className="block text-sm font-medium text-gray-700 mb-2" htmlFor="email">Email</label>
             <input 
               type="email" 
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
@@ -34,7 +34,7 @@ function Register({ onRegister }) {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1" htmlFor="password">Password</label>
+            <label className="block text-sm font-medium text-gray-700 mb-2" htmlFor="password">Password</label>
             <input 
               type="password" 
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"

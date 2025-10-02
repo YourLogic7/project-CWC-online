@@ -22,7 +22,7 @@ function Login({ onLogin }) {
         
         <form className="space-y-4" onSubmit={handleSubmit}>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1" htmlFor="email">Email</label>
+            <label className="block text-sm font-medium text-gray-700 mb-2" htmlFor="email">Email</label>
             <input 
               type="email" 
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
@@ -32,7 +32,7 @@ function Login({ onLogin }) {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1" htmlFor="password">Password</label>
+            <label className="block text-sm font-medium text-gray-700 mb-2" htmlFor="password">Password</label>
             <div className="relative">
               <input 
                 type={showPassword ? "text" : "password"} 
@@ -43,7 +43,7 @@ function Login({ onLogin }) {
               <button
                 type="button"
                 onClick={togglePasswordVisibility}
-                className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-600"
+                className="absolute inset-y-0 right-0 pr-2 flex items-center text-gray-600"
               >
                 {showPassword ? <FaEyeSlash /> : <FaEye />}
               </button>
