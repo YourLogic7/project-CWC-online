@@ -17,7 +17,7 @@ function Login({ onLogin }) {
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
-      <div className="max-w-md w-full bg-white rounded-xl shadow-lg p-10">
+      <div className="max-w-sm w-full bg-white rounded-xl shadow-lg p-10">
         <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Sign In</h2>
         
         <form onSubmit={handleSubmit}>
@@ -25,7 +25,7 @@ function Login({ onLogin }) {
             <label className="block text-sm font-medium text-gray-700 mb-3" htmlFor="email">Email</label>
             <input 
               type="email" 
-              className="w-full px-4 py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
+              className="w-full px-4 py-5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
               placeholder="your@email.com"
               id="email"
             />
@@ -36,7 +36,7 @@ function Login({ onLogin }) {
             <div className="relative">
               <input 
                 type={showPassword ? "text" : "password"} 
-                className="w-full px-4 py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all pr-10"
+                className="w-full px-4 py-5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all pr-10"
                 placeholder="••••••••"
                 id="password"
               />
