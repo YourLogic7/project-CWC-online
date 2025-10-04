@@ -256,7 +256,7 @@ function Home() {
       )}
 
       <footer>
-        <span>&copy; 2025 develop with Heart by TL SENIOR. All rights reserved.</span>
+        <span>&copy; 2025 develop with Heart dari Rakyat untuk Rakyat. All rights reserved.</span>
       </footer>
     </div>
   );
