@@ -37,8 +37,8 @@ function Register() {
   };
 
   return (
-    <div className="min-h-screen bg-white-100 flex items-center justify-center p-4">
-      <div className="bg-gray-200 p-8 rounded-lg shadow-md">
+    <div className="min-h-screen bg-white-100 flex items-center justify-center p-4" style = {{backgroundColor: '#F5F5DC'}}>
+      <div className="bg-gray-200 p-8 rounded-lg shadow-md" style = {{backgroundColor: '#222623', padding: '20px', borderRadius: '4px'}}>
         <div className="w-80 bg-white rounded-xl shadow-lg p-10">
           <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Sign Up</h2>
           
@@ -97,7 +97,7 @@ function Register() {
 
           <div className="mt-6 text-center text-sm text-gray-600">
             Already have an account? 
-            <Link to="/login" className="text-indigo-600 hover:text-indigo-500 font-medium">Sign In</Link>
+            <Link to="/login" className="text-indigo-600 hover:text-indigo-500 font-medium" style = {{color: 'white', marginLeft: '4px'}}>Sign In</Link>
           </div>
         </div>
       </div>

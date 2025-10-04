@@ -38,8 +38,8 @@ function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-white-100 flex items-center justify-center p-4">
-      <div className="bg-gray-200 p-8 rounded-lg shadow-md">
+    <div className="min-h-screen bg-white-100 flex items-center justify-center p-4" style = {{backgroundColor: '#F5F5DC'}}>
+      <div className="bg-gray-200 p-8 rounded-lg shadow-md" style = {{backgroundColor: '#222623', padding: '20px', borderRadius: '4px'}}>
         <div className="w-80 bg-white rounded-xl shadow-lg p-10">
           <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Sign In</h2>
           
@@ -86,7 +86,7 @@ function Login() {
 
           <div className="mt-6 text-center text-sm text-gray-600">
             Don't have an account? 
-            <Link to="/register" className="text-indigo-600 hover:text-indigo-500 font-medium">Sign up</Link>
+            <Link to="/register" className="text-indigo-600 hover:text-indigo-500 font-medium" style = {{color: 'white', marginLeft: '4px'}}>Sign up</Link>
           </div>
         </div>
       </div>
