@@ -62,7 +62,7 @@ function Login() {
               <input 
                 type={showPassword ? "text" : "password"} 
                 className="w-full px-10 border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all pr-20" style={{ paddingTop: '10px', paddingBottom: '10px', borderRadius: '3px' }}
-                placeholder="••••••••"
+                placeholder="Password"
                 id="password"
                 name="password"
                 value={password}
@@ -85,7 +85,7 @@ function Login() {
 
         <div className="mt-6 text-center text-sm text-gray-600">
           Don't have an account? 
-          <Link to="/register" className="text-indigo-600 hover:text-indigo-500 font-medium">Sign up</Link>
+          <Link to="/register" className="text-indigo-600 hover:text-white-500 font-medium">Sign up</Link>
         </div>
       </div>
     </div>
