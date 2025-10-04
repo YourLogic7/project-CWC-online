@@ -1,6 +1,6 @@
 {
   "rewrites": [
-    { "src": "/api/(.*)", "dest": "/react-app/backend/index.js" },
+    { "source": "/api/(.*)", "destination": "/react-app/backend/index.js" },
     { "source": "/(.*)", "destination": "/dist/$1" }
   ],
   "builds": [
