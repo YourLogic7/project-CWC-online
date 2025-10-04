@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Import eye icons
 import axios from 'axios';
 
-function Login() {
+function Login({ onLogin }) {
   const [formData, setFormData] = useState({
     username: '',
     password: '',
@@ -21,7 +21,7 @@ function Login() {
     try {
       const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/login`, formData);
       localStorage.setItem('token', res.data.token);
-      navigate('/');
+      onLogin();
     } catch (err) {
       if (err.response) {
         console.error(err.response.data);
