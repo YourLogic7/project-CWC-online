@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -16,24 +17,15 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch(`${import.meta.env.VITE_WEB_URL}/register`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await res.json();
-
-      if (res.ok) {
-        alert(data.msg);
-      } else {
-        alert(data.msg);
-      }
+      const res = await axios.post(`${import.meta.env.VITE_WEB_URL}/register`, formData);
+      alert(res.data.msg);
     } catch (err) {
-      console.error(err);
-      alert('Server error');
+      if (err.response) {
+        alert(err.response.data.msg);
+      } else {
+        console.error(err);
+        alert('Server error');
+      }
     }
   };
 
