@@ -22,6 +22,7 @@ function Login() {
       alert(res.data.msg);
     } catch (err) {
       if (err.response) {
+        console.error(err.response.data);
         alert(err.response.data.msg);
       } else {
         console.error(err);
