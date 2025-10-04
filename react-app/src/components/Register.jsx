@@ -1,11 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-function Register({ onRegister }) {
-  const handleSubmit = (e) => {
+function Register() {
+  const [formData, setFormData] = useState({
+    username: '',
+    email: '',
+    password: '',
+  });
+
+  const { username, email, password } = formData;
+
+  const onChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // a real app would have actual registration logic
-    onRegister();
+    try {
+      const res = await fetch('http://localhost:5000/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        alert(data.msg);
+      } else {
+        alert(data.msg);
+      }
+    } catch (err) {
+      console.error(err);
+      alert('Server error');
+    }
   };
 
   return (
@@ -21,6 +50,9 @@ function Register({ onRegister }) {
               className="w-full px-10 border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all" style={{ paddingTop: '10px', paddingBottom: '10px', borderRadius: '3px' }}
               placeholder="Your Username"
               id="username"
+              name="username"
+              value={username}
+              onChange={onChange}
             />
           </div>
           <div className="mb-4">
@@ -30,6 +62,9 @@ function Register({ onRegister }) {
               className="w-full px-10 border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all" style={{ paddingTop: '10px', paddingBottom: '10px', borderRadius: '3px' }}
               placeholder="your@email.com"
               id="email"
+              name="email"
+              value={email}
+              onChange={onChange}
             />
           </div>
 
@@ -40,10 +75,13 @@ function Register({ onRegister }) {
               className="w-full px-10 border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all" style={{ paddingTop: '10px', paddingBottom: '10px', borderRadius: '3px' }}
               placeholder="••••••••"
               id="password"
+              name="password"
+              value={password}
+              onChange={onChange}
             />
           </div>
 
-          <button className="w-full bg-indigo-600 hover:bg-indigo-800 text-white font-medium py-2.5 rounded-lg transition-colors custom-margin-top">
+          <button className="w-full px-10 bg-indigo-600 hover:bg-indigo-800 text-white font-medium py-2.5 rounded-lg transition-colors custom-margin-top">
             Register
           </button>
         </form>

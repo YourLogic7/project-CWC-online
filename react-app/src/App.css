@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
 body{
-    font-family: 'Pixelify Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
     color: rgb(104, 238, 193);
     background-color: #221f1f;
     margin: 0;
@@ -73,7 +75,7 @@ label[for="grup"] {
 }
 
 button {
-    font-family: 'Pixelify Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 15px;
     background-color: #7fddee;
     color: rgb(22, 22, 22);
@@ -89,7 +91,7 @@ button {
 }
 
 footer {
-    font-family: 'Pixelify Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
     color: rgb(202, 44, 44);
     background-color: rgb(104, 238, 193);
     margin-top: 60px;

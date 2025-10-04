@@ -2,13 +2,40 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Import eye icons
 
-function Login({ onLogin }) {
+function Login() {
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleSubmit = (e) => {
+  const { email, password } = formData;
+
+  const onChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // a real app would have actual login logic
-    onLogin();
+    try {
+      const res = await fetch('http://localhost:5000/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        alert(data.msg);
+      } else {
+        alert(data.msg);
+      }
+    } catch (err) {
+      console.error(err);
+      alert('Server error');
+    }
   };
 
   const togglePasswordVisibility = () => {
@@ -28,6 +55,9 @@ function Login({ onLogin }) {
               className="w-full px-10 border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all" style={{ paddingTop: '10px', paddingBottom: '10px', borderRadius: '3px' }}
               placeholder="your@email.com"
               id="email"
+              name="email"
+              value={email}
+              onChange={onChange}
             />
           </div>
 
@@ -39,6 +69,9 @@ function Login({ onLogin }) {
                 className="w-full px-10 border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all pr-20" style={{ paddingTop: '10px', paddingBottom: '10px', borderRadius: '3px' }}
                 placeholder="••••••••"
                 id="password"
+                name="password"
+                value={password}
+                onChange={onChange}
               />
               <button
                 type="button"
@@ -50,7 +83,7 @@ function Login({ onLogin }) {
             </div>
           </div>
 
-          <button className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2.5 rounded-lg transition-colors mt-6 custom-margin-top" type="submit">
+          <button className="w-full px-10 bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2.5 rounded-lg transition-colors mt-6 custom-margin-top" type="submit">
             Sign In
           </button>
         </form>
