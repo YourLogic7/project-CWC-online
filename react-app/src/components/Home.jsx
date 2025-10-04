@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import Header from './Header'; // Import the Header component
 
-function Home() {
+function Home({ toggleSidebar }) { // Receive toggleSidebar as a prop
   const [formData, setFormData] = useState({
     perner: '',
     headline: '',
@@ -145,6 +146,7 @@ function Home() {
 
   return (
     <div>
+      <Header toggleSidebar={toggleSidebar} />
       <h1 id="judul-di-luhur">Generator Updatan</h1>
       <form id="myForm">
         <label htmlFor="perner">Perner loe:</label>
