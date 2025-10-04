@@ -113,8 +113,9 @@ function Home() {
     }
 
     setShowResult(true);
-    setFormData({
-      perner: '',
+    setFormData(prevState => ({
+      ...prevState,
+      perner: prevState.perner, // Keep the perner value
       headline: '',
       layanan: '',
       dsc: '',
@@ -128,7 +129,7 @@ function Home() {
       carring: '',
       jam: '',
       inputUser: ''
-    });
+    }));
   };
 
   const copyToClipboard = () => {
