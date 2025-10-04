@@ -1,10 +1,10 @@
 {
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/backend" },
+    { "src": "/api/(.*)", "dest": "/react-app/backend/index.js" },
     { "source": "/(.*)", "destination": "/dist/$1" }
   ],
   "builds": [
-    { "src": "backend/index.js", "use": "@vercel/node" },
+    { "src": "react-app/backend/index.js", "use": "@vercel/node" },
     { "src": "package.json", "use": "@vercel/static-build", "config": { "outputDirectory": "dist" } }
   ]
 }
