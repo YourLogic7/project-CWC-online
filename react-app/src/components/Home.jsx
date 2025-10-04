@@ -36,7 +36,8 @@ function Home() {
     setViaGrup(e.target.checked);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     let hasilPText = '';
     if (radioChoice === 'radioBiasa') {
       hasilPText = "Menunggu info lebih lanjut.";
@@ -246,7 +247,7 @@ function Home() {
         <button type="button" id="generator-updatan" onClick={handleSubmit}>Sulap</button>
 
         {/* untuk copy text */}
-        {showResult && <button id="copyAll" onClick={copyToClipboard}>Salin Teks :)</button>}
+        {showResult && <button id="copyAll" onClick={(e) => { e.preventDefault(); copyToClipboard(); }}>Salin Teks :)</button>}
       </form>
 
       {showResult && (
