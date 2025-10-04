@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Import eye icons
 import axios from 'axios';
 
 function Login() {
   const [formData, setFormData] = useState({
-    email: '',
+    username: '',
     password: '',
   });
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
-  const { email, password } = formData;
+  const { username, password } = formData;
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -18,8 +19,9 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`${import.meta.env.VITE_WEB_URL}/login`, formData);
-      alert(res.data.msg);
+      const res = await axios.post('/login', formData);
+      localStorage.setItem('token', res.data.token);
+      navigate('/');
     } catch (err) {
       if (err.response) {
         console.error(err.response.data);
@@ -42,14 +44,14 @@ function Login() {
         
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700" style={{ margin: '3px 0' }} htmlFor="email">Email</label>
+            <label className="block text-sm font-medium text-gray-700" style={{ margin: '3px 0' }} htmlFor="username">Username</label>
             <input 
-              type="email" 
+              type="text" 
               className="w-full px-10 border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all" style={{ paddingTop: '10px', paddingBottom: '10px', borderRadius: '3px' }}
-              placeholder="your@email.com"
-              id="email"
-              name="email"
-              value={email}
+              placeholder="Username"
+              id="username"
+              name="username"
+              value={username}
               onChange={onChange}
             />
           </div>

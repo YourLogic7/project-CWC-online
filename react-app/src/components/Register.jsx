@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import axios from 'axios';
 
 function Register() {
@@ -8,6 +9,7 @@ function Register() {
     email: '',
     password: '',
   });
+  const [showPassword, setShowPassword] = useState(false);
 
   const { username, email, password } = formData;
 
@@ -17,7 +19,7 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`/api/register`, formData);
+      const res = await axios.post(`/register`, formData);
       alert(res.data.msg);
     } catch (err) {
       if (err.response) {
@@ -28,6 +30,10 @@ function Register() {
         alert('Server error');
       }
     }
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -63,15 +69,24 @@ function Register() {
 
           <div className="mb-4">
             <label className="block text-sm font-medium text-gray-700" style={{ margin: '3px 0' }} htmlFor="password">Password</label>
-            <input 
-              type="password" 
-              className="w-full px-10 border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all" style={{ paddingTop: '10px', paddingBottom: '10px', borderRadius: '3px' }}
-              placeholder="••••••••"
-              id="password"
-              name="password"
-              value={password}
-              onChange={onChange}
-            />
+            <div className="relative">
+              <input 
+                type={showPassword ? 'text' : 'password'} 
+                className="w-full px-10 border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all pr-20" style={{ paddingTop: '10px', paddingBottom: '10px', borderRadius: '3px' }}
+                placeholder="••••••••"
+                id="password"
+                name="password"
+                value={password}
+                onChange={onChange}
+              />
+              <button
+                type="button"
+                onClick={togglePasswordVisibility}
+                style={{ position: 'absolute', right: '0', paddingRight: '10px', paddingTop: '3px', paddingBottom: '3px', display: 'flex', alignItems: 'center', color: 'white !important', border: '1px solid white', backgroundColor: 'white', top: '50%', transform: 'translateY(-50%)' }}
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </button>
+            </div>
           </div>
 
           <button className="w-full px-10 bg-indigo-600 hover:bg-indigo-800 text-white font-medium py-2.5 rounded-lg transition-colors custom-margin-top">
