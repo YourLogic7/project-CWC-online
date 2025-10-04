@@ -85,7 +85,7 @@ function Login() {
 
         <div className="mt-6 text-center text-sm text-gray-600">
           Don't have an account? 
-          <Link to="/register" className="text-white-600 hover:text-teal-500 font-medium">Sign up</Link>
+          <Link to="/register" className="text-white-600 hover:text-teal-500 font-medium" style = {{color: 'white'}}>Sign up</Link>
         </div>
       </div>
     </div>
