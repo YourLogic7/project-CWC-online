@@ -81,6 +81,3 @@ function Sidebar({ isOpen, onLogout, toggleSidebar, user, isDarkMode, toggleDark
 }
 
 export default Sidebar;
-
-
-export default Sidebar;
