@@ -16,71 +16,43 @@
 /* Dark Mode Styles */
 body.dark-mode {
   background-color: #1a202c;
-  color: #e2e8f0;
+  color: #000000; /* Changed to black */
 }
 
 body.dark-mode .app-header {
   background-color: #2d3748;
-  color: #e2e8f0;
+  color: #000000; /* Changed to black */
 }
 
 body.dark-mode .sidebar {
   background-color: #2d3748;
-  color: #e2e8f0;
+  color: #000000; /* Changed to black */
 }
 
 body.dark-mode .sidebar a {
-  color: #e2e8f0;
-}
-
-body.dark-mode .sidebar a:hover {
-  background-color: #4a5568;
-}
-
-body.dark-mode .dashboard-container, body.dark-mode .home-container {
-  background-color: #2d3748;
+  color: #000000; /* Changed to black */
 }
 
 body.dark-mode .stat-card {
   background-color: #4a5568;
-  color: #e2e8f0;
-}
-
-body.dark-mode .dashboard-table th, body.dark-mode .dashboard-table td, body.dark-mode .data-table th, body.dark-mode .data-table td {
-  border-color: #4a5568;
-}
-
-body.dark-mode .dashboard-table th, body.dark-mode .data-table th {
-  background-color: #4a5568;
-}
-
-body.dark-mode .dashboard-table tr:nth-child(even), body.dark-mode .data-table tr:nth-child(even) {
-  background-color: #2d3748;
-}
-
-body.dark-mode .dashboard-table tr:nth-child(odd), body.dark-mode .data-table tr:nth-child(odd) {
-  background-color: #1a202c;
+  color: #000000; /* Changed to black */
 }
 
 body.dark-mode input, body.dark-mode textarea, body.dark-mode select {
   background-color: #4a5568;
-  color: #e2e8f0;
+  color: #000000; /* Changed to black */
   border-color: #6b7280;
 }
 
 body.dark-mode button {
   background-color: #4a5568;
-  color: #e2e8f0;
+  color: #000000; /* Changed to black */
   border-color: #6b7280;
-}
-
-body.dark-mode button:hover:not(:disabled) {
-  background-color: #6b7280;
 }
 
 body.dark-mode .pagination button {
   background-color: #4a5568;
-  color: #e2e8f0;
+  color: #000000; /* Changed to black */
   border-color: #6b7280;
 }
 
