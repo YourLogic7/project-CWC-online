@@ -8,7 +8,7 @@ const HamburgerIcon = () => (
     </svg>
 );
 
-function Header({ toggleSidebar }) {
+function Header({ toggleSidebar, isDarkMode, toggleDarkMode }) {
   return (
     <header className="app-header">
       <button onClick={toggleSidebar} className="sidebar-toggle">
@@ -16,6 +16,9 @@ function Header({ toggleSidebar }) {
       </button>
       {/* You can add a title or other header elements here */}
       <h1 className="header-title">Home</h1>
+      <button onClick={toggleDarkMode} className="dark-mode-toggle">
+        {isDarkMode ? 'Light Mode' : 'Dark Mode'}
+      </button>
     </header>
   );
 }
