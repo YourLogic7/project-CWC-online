@@ -1,7 +1,7 @@
 {
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/backend/index.js" },
-    { "source": "/(.*)", "destination": "/dist/$1" }
+    { "source": "/(.*)", "destination": "/dist/index.html" }
   ],
   "builds": [
     { "src": "backend/index.js", "use": "@vercel/node" },
