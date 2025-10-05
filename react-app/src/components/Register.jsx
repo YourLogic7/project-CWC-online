@@ -44,10 +44,10 @@ function Register() {
           
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700" style={{ margin: '3px 0' }} htmlFor="username">Username</label>
+              <label className="block text-sm font-medium text-gray-700" style={{ margin: '3px 0'}} htmlFor="username">Username</label>
               <input 
                 type="text" 
-                className="w-full px-10 border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all" style={{ paddingTop: '10px', paddingBottom: '10px', borderRadius: '3px' }}
+                className="w-full px-10 border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all" style={{ paddingTop: '10px', paddingBottom: '10px', borderRadius: '3px', backgroundColor: 'white' }}
                 placeholder="Your Username"
                 id="username"
                 name="username"
@@ -59,7 +59,7 @@ function Register() {
               <label className="block text-sm font-medium text-gray-700" style={{ margin: '3px 0' }} htmlFor="email">Email</label>
               <input 
                 type="email" 
-                className="w-full px-10 border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all" style={{ paddingTop: '10px', paddingBottom: '10px', borderRadius: '3px' }}
+                className="w-full px-10 border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all" style={{ paddingTop: '10px', paddingBottom: '10px', borderRadius: '3px', backgroundColor: 'white'}}
                 placeholder="your@email.com"
                 id="email"
                 name="email"
@@ -73,8 +73,8 @@ function Register() {
               <div className="relative">
                 <input 
                   type={showPassword ? 'text' : 'password'} 
-                  className="w-full px-10 border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all pr-20" style={{ paddingTop: '10px', paddingBottom: '10px', borderRadius: '3px' }}
-                  placeholder="••••••••"
+                  className="w-full px-10 border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all pr-20" style={{ paddingTop: '10px', paddingBottom: '10px', borderRadius: '3px', backgroundColor: 'white' }}
+                  placeholder="password kamu"
                   id="password"
                   name="password"
                   value={password}
@@ -83,14 +83,14 @@ function Register() {
                 <button
                   type="button"
                   onClick={togglePasswordVisibility}
-                  style={{ position: 'absolute', right: '0', paddingRight: '10px', paddingTop: '3px', paddingBottom: '3px', display: 'flex', alignItems: 'center', color: 'white !important', border: '1px solid white', backgroundColor: 'white', top: '50%', transform: 'translateY(-50%)' }}
+                  style={{ position: 'absolute', right: '0', paddingRight: '10px', paddingTop: '3px', paddingBottom: '3px', display: 'flex', alignItems: 'center', color: '#e8f0fe !important', border: '1px solid white', backgroundColor: 'white', top: '50%', transform: 'translateY(-50%)' }}
                 >
                   {showPassword ? <FaEyeSlash /> : <FaEye />}
                 </button>
               </div>
             </div>
 
-            <button className="w-full px-10 bg-indigo-600 hover:bg-indigo-800 text-white font-medium py-2.5 rounded-lg transition-colors custom-margin-top">
+            <button className="w-full px-10 bg-indigo-600 hover:bg-indigo-800 text-white font-medium py-2.5 rounded-lg transition-colors custom-margin-top"style={{backgroundColor: '#68eec1'}}>
               Register
             </button>
           </form>

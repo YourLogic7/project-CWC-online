@@ -16,7 +16,14 @@ function Home({ toggleSidebar }) { // Receive toggleSidebar as a prop
     jabatan: '',
     carring: '',
     jam: '',
-    inputUser: ''
+    inputUser: '',
+    jabatanSolver: '',
+    unitSolver: '',
+    kip: '',
+    noPermintaan: '',
+    statusPermintaan: '',
+    detailPermintaan: '',
+    namaSolver: ''
   });
 
   const [radioChoice, setRadioChoice] = useState('radioBiasa');
@@ -71,7 +78,7 @@ function Home({ toggleSidebar }) { // Receive toggleSidebar as a prop
       Hasil Pengecekan:<br>
       -Cek: ${formData.pengecekan}<br>
       Hasil Kordinasi:<br>
-      Sudah dikordinasikan dengan ${formData.jabatan} ${grupText} ${hasilPText}</p>
+      Sudah dikordinasikan dengan ${formData.unitSolver} ${formData.jabatan} ${grupText} ${hasilPText}</p>
       <p></p>
       Hasil Carring: ${formData.carring}<br>
       Jam Carring: ${formData.jam}<br>
@@ -129,7 +136,14 @@ function Home({ toggleSidebar }) { // Receive toggleSidebar as a prop
       jabatan: '',
       carring: '',
       jam: '',
-      inputUser: ''
+      inputUser: '',
+      jabatanSolver: '',
+      unitSolver: '',
+      kip: '',
+      noPermintaan: '',
+      statusPermintaan: '',
+      detailPermintaan: '',
+      namaSolver: ''
     }));
   };
 
@@ -149,58 +163,110 @@ function Home({ toggleSidebar }) { // Receive toggleSidebar as a prop
       <Header toggleSidebar={toggleSidebar} />
       <h1 id="judul-di-luhur">Generator Updatan</h1>
       <form id="myForm">
-        <label htmlFor="perner">Perner loe:</label>
-        <input type="text" id="perner" name="perner" placeholder="isi perner loe..." value={formData.perner} onChange={handleChange} /><hr /><br />
+
+        <section id="perner-headline">
+          <div>
+            <label htmlFor="perner">Perner loe:</label>
+            <input type="text" id="perner" name="perner" placeholder="isi perner loe..." value={formData.perner} onChange={handleChange} />
+          </div>
+          <div>
+            <label htmlFor="headline">Headline Tiket:</label>
+            <input type="text" id="headline" name="headline" placeholder="Isi headline coy..." value={formData.headline} onChange={handleChange} /><br />
+          </div>
+          <div>
+          <label htmlFor="layanan">No Layanan:</label>
+          <input type="text" id="layanan" name="layanan" placeholder="contoh: 11234224543" value={formData.layanan} onChange={handleChange} /><br />
+          </div>
+        </section>
+        
+        <hr />
 
         <section id="headline-layanan">
           <div>
-            <label htmlFor="headline">Headline Tiket:</label>
-            <input type="text" id="headline" name="headline" placeholder="Isi headline coy..." value={formData.headline} onChange={handleChange} />
-          </div>
-          <div>
-            <label htmlFor="layanan">No Layanan:</label>
-            <input type="text" id="layanan" name="layanan" placeholder="contoh: 11234224543" value={formData.layanan} onChange={handleChange} /><br />
-          </div>
-        </section>
-
-        <section id="tiket-data">
-          <div id="tiket">
             <label htmlFor="dsc">Tiket DSC / Tiket INSERA:</label>
             <input type="text" id="dsc" name="dsc" placeholder="contoh: 1-MPX1P09" value={formData.dsc} onChange={handleChange} />
 
             <label htmlFor="insera"></label>
-            <input type="text" id="insera" name="insera" placeholder="contoh: INC52312445" value={formData.insera} onChange={handleChange} /><br /><br />
+            <input type="text" id="insera" name="insera" placeholder="contoh: INC52312445" value={formData.insera} onChange={handleChange} /><br />
           </div>
 
           <div id="data">
             <label htmlFor="pelanggan">Nama Pelanggan / No CP:</label>
-            <input type="text" id="pelanggan" name="pelanggan" placeholder="Contoh: Rijal Indra Kurnaedi" value={formData.pelanggan} onChange={handleChange} />
+            <input type="text" id="pelanggan" name="pelanggan" placeholder="Contoh: Agus Kurnaedi" value={formData.pelanggan} onChange={handleChange} />
+            
             <label htmlFor="cp"></label>
             <input type="text" id="cp" name="cp" placeholder="contoh: 082xxxxxxxxx" value={formData.cp} onChange={handleChange} /><br /><br />
           </div>
+
+          <div id="data">
+            <label htmlFor="pelanggan">KIP DSC / No Permintaan:</label>
+            <input type="text" id="kip" name="kip" placeholder="Contoh: K31 - Tidak Bisa Browsing - 1P / 3P Mati Total" value={formData.kip} onChange={handleChange} />
+            
+            <label htmlFor="cp"></label>
+            <input type="text" id="noPermintaan" name="noPermintaan" placeholder="contoh: MOk2xxxxxxxxx" value={formData.noPermintaan} onChange={handleChange} /><br /><br />
+          </div>
+
+        </section>
+
+        <section id="tiket-data">
+          <div id="data">
+            <label htmlFor="pelanggan">Status / Detail Status Permintaan:</label>
+            <input type="text" id="statusPermintaan" name="statusPermintaan" placeholder="Fallout/Cancel/Completed/dll" value={formData.statusPermintaan} onChange={handleChange} />
+            <label htmlFor="cp"></label>
+            <input type="text" id="detailPermintaan" name="detailPermintaan" placeholder="contoh: INF005316078|ACTIVATION-9028-OrderLevelError-FAIL:Not Found. Rollback failed" value={formData.detailPermintaan} onChange={handleChange} /><br /><br />
+          </div>
+
+          <div>
+            <label htmlFor="resume">Resume Case / Report Date:</label>
+            <input type="text" id="resume" name="resume" placeholder="Isi resume case nya coy.." value={formData.resume} onChange={handleChange} />
+            
+            <label htmlFor="alamat"></label>
+            <input type="text" id="alamat" name="alamat" placeholder="contoh: 2025-10-04 15:00:35" value={formData.alamat} onChange={handleChange} /><br /><br />
+          </div>
+
+          <div id="data">
+            <label htmlFor="pelanggan">Nama PIC Kordinasi / CP Solver:</label>
+            <input type="text" id="namaSolver" name="namaSolver" placeholder="Contoh: Zainal Arifin" value={formData.namaSolver} onChange={handleChange} />
+            <label htmlFor="cp"></label>
+            <input type="text" id="cpSolver" name="cpSolver" placeholder="contoh: 082xxxxxxx atau @RizkyC4" value={formData.cpSolver} onChange={handleChange} /><br /><br />
+          </div>
+
         </section>
         <hr />
-        <section id="resume-report">
-          <div>
-            <label htmlFor="resume">Resume Case:</label>
-            <input type="text" id="resume" name="resume" placeholder="Isi resume case nya coy.." value={formData.resume} onChange={handleChange} /><br /><br />
-          </div>
-          <div>
-            <label htmlFor="alamat">Report Date:</label>
-            <input type="text" id="alamat" name="alamat" placeholder="contoh: Jl. in aja dlu jaksel" value={formData.alamat} onChange={handleChange} /><br /><br />
-          </div>
-        </section>
+
         <section id="pengecekan-jabatan">
           <div>
             <label htmlFor="pengecekan">Hasil Pengecekan:</label>
             <textarea id="pengecekan" name="pengecekan" placeholder="contoh: cek DSC permintaan PI dll." rows="6" cols="50" value={formData.pengecekan} onChange={handleChange}></textarea><br /><br />
           </div>
           <div>
-            <label htmlFor="jabatan">Jabatan Solver:</label>
+            <label htmlFor="jabatan">Unit Solver:</label>
             <input type="text" id="jabatan" name="jabatan" placeholder="kalo gak kordinasi gausah di isi yaaa..." value={formData.jabatan} onChange={handleChange} />
-            <p style={{ fontSize: '15px', color: 'red' }} id="tulisan">*contoh: TIFF HD DISTRICT JAKSEL, HSA JAKSEL, Korlap JAKSEL, dst. <br />(Kosongkan jika tidak kordinasi)</p>
+            <p style={{ fontSize: '15px', color: 'red' }} id="tulisan">*contoh: TIFF HD DISTRICT JAKSEL, TIFF AOMQ DISTRICT BANDUNG<br/> jika pilih HSA,Korlap di kolom jabatan, di kolom unit isi wilayahnya saja, contoh: JAKSEL, BANDUNG. dll<br />(Kosongkan jika tidak kordinasi)</p>
+          </div>
+          
+          <div>
+            <label htmlFor="unitSolver">Jabatan Solver:</label>
+            <select id="unitSolver" name="unitSolver" value={formData.unitSolver} onChange={handleChange}>
+              <option value="">Pilih Unit</option>
+              <option value="CC BACKROOM">CC BACKROOM</option>
+              <option value="TEKNISI">TEKNISI</option>
+              <option value="HELPDESK">HELPDESK</option>
+              <option value="TEAM LEADER">TEAM LEADER</option>
+              <option value="SITE MANAGER">SITE MANAGER</option>
+              <option value="MANAGER">MANAGER</option>
+              <option value="GENERAL MANAGER">GENERAL MANAGER</option>
+              <option value="ASMAN">ASMAN</option>
+              <option value="HEAD OF SERVICE AREA">HEAD OF SERVICE AREA</option>
+              <option value="OFFICER OF SERVICE AREA">OFFICER OF SERVICE AREA</option>
+              <option value="KORLAP">KORLAP</option>
+              <option value="SPV">SPV</option>
+              <option value="DAMAN">DAMAN</option>
+              <option value="OSD">OSD</option>
+            </select>
           </div>
         </section>
+          
         <section>
           <input type="checkbox" id="via-grup" name="grup" value="via-grup" checked={viaGrup} onChange={handleCheckboxChange} />
           <label htmlFor="grup">Via grup:</label><br />

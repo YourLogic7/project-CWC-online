@@ -27,7 +27,7 @@ body{
     z-index: 999; /* Below sidebar (1000) but above content */
 }
 
-#perner, #headline, #dsc, #insera, #pelanggan, #cp, #layanan, #resume, #alamat, #pengecekan, #jabatan, #textboxContainer, #carring, #jam {
+#namaSolver, #cpSolver, #unitSolver, #kip, #noPermintaan, #statusPermintaan, #detailPermintaan, #perner, #headline, #dsc, #insera, #pelanggan, #cp, #layanan, #resume, #alamat, #pengecekan, #jabatan, #textboxContainer, #carring, #jam {
     display: block;
     width: 300px;
     padding: 8px;
@@ -36,6 +36,18 @@ body{
     border-radius: 4px;
     background-color: #2c2a2a;
     color: white;
+}
+
+#tulisan {
+    display: block;
+    width: 300px;
+    padding: 8px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+}
+
+#perner-headline {
+  display: flex;
 }
 
 #headline-layanan {
