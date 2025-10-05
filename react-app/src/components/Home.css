@@ -4,64 +4,59 @@
   word-wrap: break-word;
 }
 
-.home-container {
-  padding: 2rem;
+/* Original form layout styles */
+#perner, #headline, #layanan, #dsc, #insera, #pelanggan, #cp, #kip, #noPermintaan, #statusPermintaan, #detailPermintaan, #resume, #alamat, #namaSolver, #cpSolver, #jabatan, #carring, #jam, #textboxContainer input, #textboxContainer textarea {
+  width: 300px; /* Revert to original fixed width */
+  margin-bottom: 10px;
+  margin-left: 5px;
 }
 
-#myForm {
-  display: grid;
-  gap: 1.5rem;
+#pengecekan {
+  width: 300px; /* Specific width for textarea */
+  margin-bottom: 10px;
+  margin-left: 5px;
 }
 
-.form-section {
-  background-color: var(--card-background);
-  padding: 1.5rem 2rem;
-  border-radius: 8px;
-  box-shadow: var(--shadow-md);
+#unitSolver {
+  width: 310px; /* Adjust width for select */
+  margin-bottom: 10px;
+  margin-left: 5px;
 }
 
-.form-section h3 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.form-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-}
-
-.form-field {
+#perner-headline,
+#headline-layanan,
+#tiket-data,
+#pengecekan-jabatan,
+#carring-jam {
   display: flex;
-  flex-direction: column;
+  gap: 20px; /* Add some spacing between sections */
+  margin-bottom: 20px;
 }
 
-.radio-group h4 {
-  font-size: 1rem;
-  font-weight: 600;
-  margin-bottom: 0.75rem;
+#myForm label {
+  margin-bottom: 5px;
 }
 
-.radio-group div {
-  display: flex;
-  align-items: center;
-  margin-bottom: 0.5rem;
+#myForm input[type="radio"],
+#myForm input[type="checkbox"] {
+  width: auto; /* Override 100% width for radio/checkbox */
+  margin-right: 5px;
 }
 
-.radio-group input[type="radio"] {
-  width: auto;
-  margin-right: 0.5rem;
+#myForm h4 {
+  margin-top: 15px;
+  margin-bottom: 10px;
 }
 
-.form-actions {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1rem;
+#myForm button {
+  margin-top: 15px;
 }
 
+#copyAll {
+  margin-left: 10px;
+}
+
+/* Submitted Data Table Styles (kept from previous styling) */
 .submitted-data-container {
   margin-top: 3rem;
   background-color: var(--card-background);
