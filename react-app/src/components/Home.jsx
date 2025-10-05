@@ -36,10 +36,60 @@ function Home({ toggleSidebar, user }) {
   const [showResult, setShowResult] = useState(false);
   const [result, setResult] = useState({ dsc: '', insera: '' });
   const [submittedData, setSubmittedData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(10);
+  const [filterByToday, setFilterByToday] = useState(false);
+
+  // Calculations for Page Performance
+  const totalSubmissions = submittedData.length;
+  const uniqueDays = new Set(submittedData.map(submission => new Date(submission.createdAt).toDateString()));
+  const averageSubmissionsPerDay = uniqueDays.size > 0 ? (totalSubmissions / uniqueDays.size).toFixed(2) : 0;
 
   useEffect(() => {
     fetchSubmissions();
   }, []);
+
+  const handleItemsPerPageChange = (e) => {
+    setItemsPerPage(Number(e.target.value));
+    setCurrentPage(1); // Reset to first page when items per page changes
+  };
+
+  const handleFilterByTodayChange = (e) => {
+    setFilterByToday(e.target.checked);
+    setCurrentPage(1); // Reset to first page when filter changes
+  };
+
+  // Filter data by today's date if filterByToday is true
+  const filteredSubmissions = filterByToday
+    ? submittedData.filter(submission => {
+        const submissionDate = new Date(submission.createdAt);
+        const today = new Date();
+        return (
+          submissionDate.getDate() === today.getDate() &&
+          submissionDate.getMonth() === today.getMonth() &&
+          submissionDate.getFullYear() === today.getFullYear()
+        );
+      })
+    : submittedData;
+
+  // Derived state for pagination
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = filteredSubmissions.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(filteredSubmissions.length / itemsPerPage);
+  const pageNumbers = [];
+  for (let i = 1; i <= totalPages; i++) {
+    pageNumbers.push(i);
+  }
+
+  useEffect(() => {
+    fetchSubmissions();
+  }, []);
+
+  const handleItemsPerPageChange = (e) => {
+    setItemsPerPage(Number(e.target.value));
+    setCurrentPage(1); // Reset to first page when items per page changes
+  };
 
   const fetchSubmissions = async () => {
     try {
@@ -265,38 +315,81 @@ function Home({ toggleSidebar, user }) {
         </div>
       )}
 
-      {submittedData.length > 0 && (
-        <div className="submitted-data-container">
-          <h2>Submitted Data</h2>
-          <div style={{ marginBottom: '1rem' }}>
-            <button onClick={() => handleExport('csv')} style={{ marginRight: '10px' }}>Download CSV</button>
-            <button onClick={() => handleExport('excel')}>Download Excel</button>
+      {user && user.role === 'Agent' && (
+        <section className="page-performance-section">
+          <h2>Page Performance</h2>
+          <div className="stats-grid">
+            <div className="stat-card">
+              <h3>Total Submissions</h3>
+              <p>{totalSubmissions}</p>
+            </div>
+            <div className="stat-card">
+              <h3>Average Submissions per Day</h3>
+              <p>{averageSubmissionsPerDay}</p>
+            </div>
           </div>
-          <div className="table-wrapper">
-            <table className="data-table">
-              <thead>
-                <tr>
-                  <th>Nama</th>
-                  <th>Timestamp</th>
-                  {Object.keys(formData).map(key => <th key={key}>{key}</th>)}
-                </tr>
-              </thead>
-              <tbody>
-                {submittedData.map((data, index) => (
-                  <tr key={index}>
-                    <td>{data.user.nama}</td>
-                    <td>{new Date(data.createdAt).toLocaleString()}</td>
-                    {Object.keys(formData).map(key => (
-                      <td key={key} className={key === 'headline' ? 'headline-cell' : ''}>
-                        {data[key]}
-                      </td>
+
+          {submittedData.length > 0 && (
+            <div className="submitted-data-container">
+              <h2>All Submitted Data</h2>
+              <div style={{ marginBottom: '1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div>
+                  <button onClick={() => handleExport('csv')} style={{ marginRight: '10px' }}>Download CSV</button>
+                  <button onClick={() => handleExport('excel')}>Download Excel</button>
+                </div>
+                <div>
+                  <label htmlFor="items-per-page">Items per page:</label>
+                  <select id="items-per-page" value={itemsPerPage} onChange={handleItemsPerPageChange}>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="40">40</option>
+                    <option value="60">60</option>
+                    <option value="80">80</option>
+                    <option value="100">100</option>
+                    <option value={submittedData.length}>All</option>
+                  </select>
+                </div>
+                <div>
+                  <input type="checkbox" id="filter-by-today" checked={filterByToday} onChange={handleFilterByTodayChange} />
+                  <label htmlFor="filter-by-today">Show only today's data</label>
+                </div>
+              </div>
+              <div className="table-wrapper">
+                <table className="data-table">
+                  <thead>
+                    <tr>
+                      <th>Nama</th>
+                      <th>Timestamp</th>
+                      {Object.keys(formData).map(key => <th key={key}>{key}</th>)}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {currentItems.map((data, index) => (
+                      <tr key={index}>
+                        <td>{data.user.nama}</td>
+                        <td>{new Date(data.createdAt).toLocaleString()}</td>
+                        {Object.keys(formData).map(key => (
+                          <td key={key} className={key === 'headline' ? 'headline-cell' : ''}>
+                            {data[key]}
+                          </td>
+                        ))}
+                      </tr>
                     ))}
-                  </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div className="pagination">
+                <button onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))} disabled={currentPage === 1}>Previous</button>
+                {pageNumbers.map(number => (
+                  <button key={number} onClick={() => setCurrentPage(number)} className={currentPage === number ? 'active' : ''}>
+                    {number}
+                  </button>
                 ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
+                <button onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))} disabled={currentPage === totalPages}>Next</button>
+              </div>
+            </div>
+          )}
+        </section>
       )}
 
       <footer>
