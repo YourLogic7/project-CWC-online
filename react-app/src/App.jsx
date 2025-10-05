@@ -55,8 +55,13 @@ function App() {
     setSidebarOpen(!isSidebarOpen);
   };
 
-  // Determine if Sidebar should be shown
-  const showSidebar = isAuthenticated && (location.pathname === '/' || location.pathname === '/dashboard');
+  useEffect(() => {
+    if (isAuthenticated && (location.pathname === '/' || location.pathname === '/dashboard')) {
+      setSidebarOpen(true);
+    } else {
+      setSidebarOpen(false);
+    }
+  }, [isAuthenticated, location.pathname]);
 
   return (
     <div className={`app-container ${isSidebarOpen ? 'sidebar-open' : ''}`}>

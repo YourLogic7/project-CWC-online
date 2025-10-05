@@ -51,7 +51,9 @@ function Dashboard() {
         if (s.user?.nama) acc[s.user.nama] = true; return acc;
     }, {})).length;
 
-    const average = uniqueUsersInFullData > 0 ? (data.length / uniqueUsersInFullData).toFixed(2) : 0;
+    const average = filter === 'all' && uniqueUsersInFullData > 0 
+      ? (data.length / uniqueUsersInFullData).toFixed(2) 
+      : (filter !== 'all' ? total : 0);
 
     setStats({ total, average, userCounts });
   };
@@ -80,9 +82,14 @@ function Dashboard() {
           <h2>{selectedUser === 'all' ? 'Total Submissions' : `Submissions by ${selectedUser}`}</h2>
           <p>{stats.total}</p>
         </div>
-        {selectedUser === 'all' && (
+        {selectedUser === 'all' ? (
           <div className="stat-card">
             <h2>Average per User</h2>
+            <p>{stats.average}</p>
+          </div>
+        ) : (
+          <div className="stat-card">
+            <h2>Total Submissions by {selectedUser}</h2>
             <p>{stats.average}</p>
           </div>
         )}
