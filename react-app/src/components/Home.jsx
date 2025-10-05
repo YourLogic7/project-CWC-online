@@ -210,7 +210,7 @@ function Home({ toggleSidebar, user }) {
           
         <section>
           <input type="checkbox" id="via-grup" name="grup" value="via-grup" checked={viaGrup} onChange={handleCheckboxChange} />
-          <label htmlFor="grup">Via grup:</label><br />
+          <label id="tulisanGrup" htmlFor="grup">Via grup <span style={{ fontSize: '15px', color: 'red' }}>(Di pilih kalo kordinasi via Grup)</span></label><br />
           <hr />
           {/* Pilihan Radio Button */}
 

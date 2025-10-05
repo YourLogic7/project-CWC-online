@@ -11,6 +11,20 @@
   margin-left: 5px;
 }
 
+#tulisan {
+  width: 300px; /* Revert to original fixed width */
+  margin-bottom: 10px;
+  margin-left: 5px;
+}
+
+#tulisanGrup {
+  display: inline-block;
+  width: 300px; /* Revert to original fixed width */
+  margin-bottom: 10px;
+  margin-left: 5px;
+}
+
+
 #pengecekan {
   width: 300px; /* Specific width for textarea */
   margin-bottom: 10px;
