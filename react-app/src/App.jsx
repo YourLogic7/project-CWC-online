@@ -56,11 +56,11 @@ function App() {
   };
 
   // Determine if Sidebar should be shown
-  const showSidebar = location.pathname === '/' || location.pathname === '/dashboard';
+  const showSidebar = isAuthenticated && (location.pathname === '/' || location.pathname === '/dashboard');
 
   return (
     <div className={`app-container ${isSidebarOpen ? 'sidebar-open' : ''}`}>
-      {showSidebar && <Sidebar isOpen={isSidebarOpen} onLogout={handleLogout} toggleSidebar={toggleSidebar} user={user} />}
+      {isAuthenticated && <Sidebar isOpen={isSidebarOpen} onLogout={handleLogout} toggleSidebar={toggleSidebar} user={user} />}
       <div className="main-content">
         <Routes>
           <Route path="/login" element={<Login onLogin={handleLogin} />} />
