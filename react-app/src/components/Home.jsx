@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Header from './Header'; // Import the Header component
 import axios from 'axios';
+import * as XLSX from 'xlsx';
+import Papa from 'papaparse';
+import './Home.css'; // Import the new CSS file
 
 function Home({ toggleSidebar, user }) { // Receive toggleSidebar and user as props
   const [formData, setFormData] = useState({
@@ -194,6 +197,35 @@ function Home({ toggleSidebar, user }) { // Receive toggleSidebar and user as pr
     }
   };
 
+  const handleExport = (format) => {
+    const dataToExport = submittedData.map(data => {
+      const { user, createdAt, ...rest } = data;
+      return {
+        nama_pengguna: user.nama,
+        timestamp: new Date(createdAt).toLocaleString(),
+        ...rest
+      };
+    });
+
+    if (format === 'csv') {
+      const csv = Papa.unparse(dataToExport);
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.setAttribute('download', 'submissions.csv');
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    if (format === 'excel') {
+      const worksheet = XLSX.utils.json_to_sheet(dataToExport);
+      const workbook = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(workbook, worksheet, "Submissions");
+      XLSX.writeFile(workbook, "submissions.xlsx");
+    }
+  };
+
   return (
     <div>
       <Header toggleSidebar={toggleSidebar} />
@@ -355,11 +387,15 @@ function Home({ toggleSidebar, user }) { // Receive toggleSidebar and user as pr
       {submittedData.length > 0 && (
         <div>
           <h2>Submitted Data</h2>
+          <div style={{ marginBottom: '10px' }}>
+            <button onClick={() => handleExport('csv')} style={{ marginRight: '10px' }}>Download CSV</button>
+            <button onClick={() => handleExport('excel')}>Download Excel</button>
+          </div>
           <table border="1" cellPadding="5">
             <thead>
               <tr>
-                <th>Timestamp</th>
                 <th>Nama</th>
+                <th>Timestamp</th>
                 {Object.keys(formData).map(key => <th key={key}>{key}</th>)}
               </tr>
             </thead>
@@ -368,7 +404,11 @@ function Home({ toggleSidebar, user }) { // Receive toggleSidebar and user as pr
                 <tr key={index}>
                   <td>{data.user.nama}</td>
                   <td>{new Date(data.createdAt).toLocaleString()}</td>
-                  {Object.keys(formData).map(key => <td key={key}>{data[key]}</td>)}
+                  {Object.keys(formData).map(key => (
+                    <td key={key} className={key === 'headline' ? 'headline-cell' : ''}>
+                      {data[key]}
+                    </td>
+                  ))}
                 </tr>
               ))}
             </tbody>
