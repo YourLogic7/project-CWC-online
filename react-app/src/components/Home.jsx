@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './Header'; // Import the Header component
+import axios from 'axios';
 
-function Home({ toggleSidebar }) { // Receive toggleSidebar as a prop
+function Home({ toggleSidebar, user }) { // Receive toggleSidebar and user as props
   const [formData, setFormData] = useState({
     perner: '',
     headline: '',
@@ -31,6 +32,25 @@ function Home({ toggleSidebar }) { // Receive toggleSidebar as a prop
   const [viaGrup, setViaGrup] = useState(false);
   const [showResult, setShowResult] = useState(false);
   const [result, setResult] = useState({ dsc: '', insera: '' });
+  const [submittedData, setSubmittedData] = useState([]);
+
+  useEffect(() => {
+    fetchSubmissions();
+  }, []);
+
+  const fetchSubmissions = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/submissions`, {
+        headers: {
+          'x-auth-token': token,
+        },
+      });
+      setSubmittedData(res.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -45,109 +65,44 @@ function Home({ toggleSidebar }) { // Receive toggleSidebar as a prop
     setViaGrup(e.target.checked);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    let hasilPText = '';
-    if (radioChoice === 'radioBiasa') {
-      hasilPText = "Menunggu info lebih lanjut.";
-    } else if (radioChoice === 'tanpa-kordinasi') {
-      hasilPText = formData.inputUser;
-    } else if (radioChoice === 'radioTextbox') {
-      if (formData.inputUser.trim() === '') {
-        hasilPText = "ISI INFORMASI TAMBAHANNYAA WOYY!";
-      } else {
-        hasilPText = formData.inputUser;
-      }
+    try {
+      const token = localStorage.getItem('token');
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/submissions`, { ...formData, radioChoice, viaGrup }, {
+        headers: {
+          'x-auth-token': token,
+        },
+      });
+      fetchSubmissions();
+      setFormData(prevState => ({
+        ...prevState,
+        perner: prevState.perner, // Keep the perner value
+        headline: '',
+        layanan: '',
+        dsc: '',
+        insera: '',
+        pelanggan: '',
+        cp: '',
+        resume: '',
+        alamat: '',
+        pengecekan: '',
+        jabatan: '',
+        carring: '',
+        jam: '',
+        inputUser: '',
+        jabatanSolver: '',
+        unitSolver: '',
+        kip: '',
+        noPermintaan: '',
+        statusPermintaan: '',
+        detailPermintaan: '',
+        namaSolver: '',
+        cpSolver: ''
+      }));
+    } catch (err) {
+      console.error(err);
     }
-
-    const grupText = viaGrup ? "Via grup," : "";
-
-    const hasilDsc = `
-      <p>${formData.insera} | ${formData.dsc}</p>
-      ${formData.perner} / C4 Area / ${formData.jabatan} / Hasil Cek: ${formData.pengecekan}<br>
-      Sudah dikordinasikan dengan ${formData.jabatan} ${grupText} ${hasilPText}<br>
-      <p>Hasil Carring: ${formData.carring} <br> Jam Carring: ${formData.jam}</p>
-      <p>=====================================</p>
-    `;
-
-    const hasilInsera = `
-      <p>${formData.headline}</p>
-      Nama Pelanggan / CP: ${formData.pelanggan} ${formData.cp}<br>
-      No. Tiket/ No Layanan: ${formData.insera} ${formData.dsc} / ${formData.layanan}<br>
-      Resume Case: ${formData.resume}<br>
-      Report Date: ${formData.alamat}<br>
-      <p></p>
-      Hasil Pengecekan:<br>
-      -Cek: ${formData.pengecekan}<br>
-      Hasil Kordinasi:<br>
-      Sudah dikordinasikan dengan ${formData.unitSolver} ${formData.jabatan} ${grupText} ${hasilPText}</p>
-      <p></p>
-      Hasil Carring: ${formData.carring}<br>
-      Jam Carring: ${formData.jam}<br>
-      <p></p>
-      Demikian informasinya<br>
-      Terima kasih.
-    `;
-
-    const hasiltankorDsc = `
-      <p>${formData.insera} | ${formData.dsc}</p>
-      <p>${formData.perner} / C4 Area / Tanpa kordinasi,${hasilPText} / Hasil Cek: ${formData.pengecekan}</p>
-      <p>Hasil Carring: ${formData.carring}<br> Jam Carring: ${formData.jam}</p>
-      <p>=====================================</p>
-    `;
-
-    const hasiltankorInsera = `
-      <p>${formData.headline}</p>
-      Nama Pelanggan / CP: ${formData.pelanggan} ${formData.cp}<br>
-      No. Tiket/ No Layanan: ${formData.insera} ${formData.dsc} / ${formData.layanan}<br>
-      Resume Case: ${formData.resume}<br>
-      Report Date: ${formData.alamat}<br>
-      <p></p>
-      Hasil Pengecekan:<br>
-      -Cek: ${formData.pengecekan}<br>
-      <p></p>
-      Hasil Kordinasi:<br>
-      - Tanpa kordinasi,  ${hasilPText}<br>
-      <p></p>
-      Hasil Carring: ${formData.carring}<br>
-      Jam Carring: ${formData.jam}<br>
-      <p> </p>
-      Demikian informasinya<br>
-      Terima kasih.
-    `;
-
-    if (radioChoice === 'tanpa-kordinasi') {
-      setResult({ dsc: hasiltankorDsc, insera: hasiltankorInsera });
-    } else {
-      setResult({ dsc: hasilDsc, insera: hasilInsera });
-    }
-
-    setShowResult(true);
-    setFormData(prevState => ({
-      ...prevState,
-      perner: prevState.perner, // Keep the perner value
-      headline: '',
-      layanan: '',
-      dsc: '',
-      insera: '',
-      pelanggan: '',
-      cp: '',
-      resume: '',
-      alamat: '',
-      pengecekan: '',
-      jabatan: '',
-      carring: '',
-      jam: '',
-      inputUser: '',
-      jabatanSolver: '',
-      unitSolver: '',
-      kip: '',
-      noPermintaan: '',
-      statusPermintaan: '',
-      detailPermintaan: '',
-      namaSolver: '',
-      cpSolver: ''
-    }));
   };
 
   const copyToClipboard = () => {
@@ -165,7 +120,7 @@ function Home({ toggleSidebar }) { // Receive toggleSidebar as a prop
     <div>
       <Header toggleSidebar={toggleSidebar} />
       <h1 id="judul-di-luhur">Generator Updatan</h1>
-      <form id="myForm">
+      <form id="myForm" onSubmit={handleSubmit}>
 
         <section id="perner-headline">
           <div>
@@ -308,7 +263,7 @@ function Home({ toggleSidebar }) { // Receive toggleSidebar as a prop
 
         {/* tombol hasil braddder */}
         <label htmlFor="pesan">Sok Pencet Daks:</label>
-        <button type="button" id="generator-updatan" onClick={handleSubmit}>Sulap</button>
+        <button type="submit" id="generator-updatan">Sulap</button>
 
         {/* untuk copy text */}
         {showResult && <button id="copyAll" onClick={(e) => { e.preventDefault(); copyToClipboard(); }}>Salin Teks :)</button>}
@@ -316,6 +271,30 @@ function Home({ toggleSidebar }) { // Receive toggleSidebar as a prop
 
       {showResult && (
         <div id="hasil-akhir" dangerouslySetInnerHTML={{ __html: result.dsc + result.insera }}>
+        </div>
+      )}
+
+      {submittedData.length > 0 && (
+        <div>
+          <h2>Submitted Data</h2>
+          <table border="1" cellPadding="5">
+            <thead>
+              <tr>
+                <th>Nama</th>
+                <th>Timestamp</th>
+                {Object.keys(formData).map(key => <th key={key}>{key}</th>)}
+              </tr>
+            </thead>
+            <tbody>
+              {submittedData.map((data, index) => (
+                <tr key={index}>
+                  <td>{data.user.nama}</td>
+                  <td>{new Date(data.createdAt).toLocaleString()}</td>
+                  {Object.keys(formData).map(key => <td key={key}>{data[key]}</td>)}
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       )}
 

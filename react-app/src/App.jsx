@@ -1,25 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom';
 import Sidebar from './components/Sidebar.jsx';
 import Home from './components/Home.jsx';
 import Login from './components/Login.jsx';
 import Register from './components/Register.jsx';
+import { jwtDecode } from 'jwt-decode';
 import './App.css';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isSidebarOpen, setSidebarOpen] = useState(false);
+  const [user, setUser] = useState(null);
   const navigate = useNavigate();
   const location = useLocation(); // Get current location
 
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decodedToken = jwtDecode(token);
+      setUser(decodedToken.user);
+      setIsAuthenticated(true);
+    }
+  }, []);
+
   const handleLogin = () => {
-    setIsAuthenticated(true);
-    navigate('/');
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decodedToken = jwtDecode(token);
+      setUser(decodedToken.user);
+      setIsAuthenticated(true);
+      navigate('/');
+    }
   };
 
   const handleLogout = () => {
+    localStorage.removeItem('token');
     setSidebarOpen(false); // Close sidebar on logout
     setIsAuthenticated(false);
+    setUser(null);
     navigate('/login');
   };
 
@@ -44,7 +62,7 @@ function App() {
           <Route
             path="/"
             element={
-              isAuthenticated ? <Home toggleSidebar={toggleSidebar} /> : <Navigate to="/login" />
+              isAuthenticated ? <Home toggleSidebar={toggleSidebar} user={user} /> : <Navigate to="/login" />
             }
           />
         </Routes>

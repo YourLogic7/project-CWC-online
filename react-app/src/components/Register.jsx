@@ -8,10 +8,11 @@ function Register() {
     username: '',
     email: '',
     password: '',
+    nama: ''
   });
   const [showPassword, setShowPassword] = useState(false);
 
-  const { username, email, password } = formData;
+  const { username, email, password, nama } = formData;
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -52,6 +53,18 @@ function Register() {
                 id="username"
                 name="username"
                 value={username}
+                onChange={onChange}
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700" style={{ margin: '3px 0' }} htmlFor="nama">Nama</label>
+              <input 
+                type="text" 
+                className="w-full px-10 border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all" style={{ paddingTop: '10px', paddingBottom: '10px', borderRadius: '3px', backgroundColor: 'white'}}
+                placeholder="Nama Lengkap"
+                id="nama"
+                name="nama"
+                value={nama}
                 onChange={onChange}
               />
             </div>

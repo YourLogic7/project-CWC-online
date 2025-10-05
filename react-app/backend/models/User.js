@@ -15,6 +15,15 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  nama: {
+    type: String,
+    required: true,
+  },
+  role: {
+    type: String,
+    required: true,
+    default: 'agent',
+  },
 });
 
 module.exports = mongoose.model('User', UserSchema);
