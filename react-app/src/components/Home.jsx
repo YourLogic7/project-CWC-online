@@ -65,8 +65,96 @@ function Home({ toggleSidebar, user }) { // Receive toggleSidebar and user as pr
     setViaGrup(e.target.checked);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
+    let hasilPText = '';
+    if (radioChoice === 'radioBiasa') {
+      hasilPText = "Menunggu info lebih lanjut.";
+    } else if (radioChoice === 'tanpa-kordinasi') {
+      hasilPText = formData.inputUser;
+    } else if (radioChoice === 'radioTextbox') {
+      if (formData.inputUser.trim() === '') {
+        hasilPText = "ISI INFORMASI TAMBAHANNYAA WOYY!";
+      } else {
+        hasilPText = formData.inputUser;
+      }
+    }
+
+    const grupText = viaGrup ? "Via grup," : "";
+
+    const hasilDsc = `
+      <p>${formData.insera} | ${formData.dsc}</p>
+      ${formData.perner} / C4 Area / ${formData.jabatan} / Hasil Cek: ${formData.pengecekan}<br>
+      Sudah dikordinasikan dengan ${formData.jabatan} ${grupText} ${hasilPText}<br>
+      <p>Hasil Carring: ${formData.carring} <br> Jam Carring: ${formData.jam}</p>
+      <p>=====================================</p>
+    `;
+
+    const hasilInsera = `
+      <p>${formData.headline}</p>
+      Nama Pelanggan / CP: ${formData.pelanggan} ${formData.cp}<br>
+      No. Tiket/ No Layanan: ${formData.insera} ${formData.dsc} / ${formData.layanan}<br>
+      Resume Case: ${formData.resume}<br>
+      Report Date: ${formData.alamat}<br>
+      <p></p>
+      Hasil Pengecekan:<br>
+      -Cek: ${formData.pengecekan}<br>
+      Hasil Kordinasi:<br>
+      Sudah dikordinasikan dengan ${formData.unitSolver} ${formData.jabatan} ${grupText} ${hasilPText}</p>
+      <p></p>
+      Hasil Carring: ${formData.carring}<br>
+      Jam Carring: ${formData.jam}<br>
+      <p></p>
+      Demikian informasinya<br>
+      Terima kasih.
+    `;
+
+    const hasiltankorDsc = `
+      <p>${formData.insera} | ${formData.dsc}</p>
+      <p>${formData.perner} / C4 Area / Tanpa kordinasi,${hasilPText} / Hasil Cek: ${formData.pengecekan}</p>
+      <p>Hasil Carring: ${formData.carring}<br> Jam Carring: ${formData.jam}</p>
+      <p>=====================================</p>
+    `;
+
+    const hasiltankorInsera = `
+      <p>${formData.headline}</p>
+      Nama Pelanggan / CP: ${formData.pelanggan} ${formData.cp}<br>
+      No. Tiket/ No Layanan: ${formData.insera} ${formData.dsc} / ${formData.layanan}<br>
+      Resume Case: ${formData.resume}<br>
+      Report Date: ${formData.alamat}<br>
+      <p></p>
+      Hasil Pengecekan:<br>
+      -Cek: ${formData.pengecekan}<br>
+      <p></p>
+      Hasil Kordinasi:<br>
+      - Tanpa kordinasi,  ${hasilPText}<br>
+      <p></p>
+      Hasil Carring: ${formData.carring}<br>
+      Jam Carring: ${formData.jam}<br>
+      <p> </p>
+      Demikian informasinya<br>
+      Terima kasih.
+    `;
+
+    if (radioChoice === 'tanpa-kordinasi') {
+      setResult({ dsc: hasiltankorDsc, insera: hasiltankorInsera });
+    } else {
+      setResult({ dsc: hasilDsc, insera: hasilInsera });
+    }
+
+    setShowResult(true);
+  };
+
+  const copyToClipboard = async () => {
+    const textToCopy = document.getElementById('hasil-akhir').innerText;
+    navigator.clipboard.writeText(textToCopy)
+      .then(() => {
+        alert('Teks berhasil disalin ke clipboard!');
+      })
+      .catch(err => {
+        alert('Gagal menyalin teks.');
+      });
+
     try {
       const token = localStorage.getItem('token');
       await axios.post(`${import.meta.env.VITE_API_URL}/api/submissions`, { ...formData, radioChoice, viaGrup }, {
@@ -100,27 +188,17 @@ function Home({ toggleSidebar, user }) { // Receive toggleSidebar and user as pr
         namaSolver: '',
         cpSolver: ''
       }));
+      setShowResult(false);
     } catch (err) {
       console.error(err);
     }
-  };
-
-  const copyToClipboard = () => {
-    const textToCopy = document.getElementById('hasil-akhir').innerText;
-    navigator.clipboard.writeText(textToCopy)
-      .then(() => {
-        alert('Teks berhasil disalin ke clipboard!');
-      })
-      .catch(err => {
-        alert('Gagal menyalin teks.');
-      });
   };
 
   return (
     <div>
       <Header toggleSidebar={toggleSidebar} />
       <h1 id="judul-di-luhur">Generator Updatan</h1>
-      <form id="myForm" onSubmit={handleSubmit}>
+      <form id="myForm">
 
         <section id="perner-headline">
           <div>
@@ -263,7 +341,7 @@ function Home({ toggleSidebar, user }) { // Receive toggleSidebar and user as pr
 
         {/* tombol hasil braddder */}
         <label htmlFor="pesan">Sok Pencet Daks:</label>
-        <button type="submit" id="generator-updatan">Sulap</button>
+        <button type="button" id="generator-updatan" onClick={handleSubmit}>Sulap</button>
 
         {/* untuk copy text */}
         {showResult && <button id="copyAll" onClick={(e) => { e.preventDefault(); copyToClipboard(); }}>Salin Teks :)</button>}
