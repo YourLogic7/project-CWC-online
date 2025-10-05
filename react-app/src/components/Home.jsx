@@ -23,7 +23,8 @@ function Home({ toggleSidebar }) { // Receive toggleSidebar as a prop
     noPermintaan: '',
     statusPermintaan: '',
     detailPermintaan: '',
-    namaSolver: ''
+    namaSolver: '',
+    cpSolver: ''
   });
 
   const [radioChoice, setRadioChoice] = useState('radioBiasa');
@@ -143,7 +144,8 @@ function Home({ toggleSidebar }) { // Receive toggleSidebar as a prop
       noPermintaan: '',
       statusPermintaan: '',
       detailPermintaan: '',
-      namaSolver: ''
+      namaSolver: '',
+      cpSolver: ''
     }));
   };
 
