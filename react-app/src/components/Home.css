@@ -1,0 +1,5 @@
+.headline-cell {
+  max-width: 250px; /* Adjust this width as needed */
+  white-space: normal;
+  word-wrap: break-word;
+}

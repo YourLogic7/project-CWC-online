@@ -358,8 +358,8 @@ function Home({ toggleSidebar, user }) { // Receive toggleSidebar and user as pr
           <table border="1" cellPadding="5">
             <thead>
               <tr>
-                <th>Nama</th>
                 <th>Timestamp</th>
+                <th>Nama</th>
                 {Object.keys(formData).map(key => <th key={key}>{key}</th>)}
               </tr>
             </thead>
