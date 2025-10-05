@@ -82,15 +82,6 @@ function Home({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
     pageNumbers.push(i);
   }
 
-  useEffect(() => {
-    fetchSubmissions();
-  }, []);
-
-  const handleItemsPerPageChange = (e) => {
-    setItemsPerPage(Number(e.target.value));
-    setCurrentPage(1); // Reset to first page when items per page changes
-  };
-
   const fetchSubmissions = async () => {
     try {
       const token = localStorage.getItem('token');
