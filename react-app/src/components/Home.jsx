@@ -242,27 +242,19 @@ function Home({ toggleSidebar }) { // Receive toggleSidebar as a prop
           <div>
             <label htmlFor="jabatan">Unit Solver:</label>
             <input type="text" id="jabatan" name="jabatan" placeholder="kalo gak kordinasi gausah di isi yaaa..." value={formData.jabatan} onChange={handleChange} />
-            <p style={{ fontSize: '15px', color: 'red' }} id="tulisan">*contoh: TIFF HD DISTRICT JAKSEL, TIFF AOMQ DISTRICT BANDUNG<br/> jika pilih HSA,Korlap di kolom jabatan, di kolom unit isi wilayahnya saja, contoh: JAKSEL, BANDUNG. dll<br />(Kosongkan jika tidak kordinasi)</p>
+            <p style={{ fontSize: '15px', color: 'red' }} id="tulisan">*contoh: TIFF HD DISTRICT JAKSEL, TIFF AOMQ DISTRICT BANDUNG, DLL.<br />(Kosongkan jika tidak kordinasi)</p>
           </div>
           
           <div>
             <label htmlFor="unitSolver">Jabatan Solver:</label>
             <select id="unitSolver" name="unitSolver" value={formData.unitSolver} onChange={handleChange}>
-              <option value="">Pilih Unit</option>
-              <option value="CC BACKROOM">CC BACKROOM</option>
-              <option value="TEKNISI">TEKNISI</option>
-              <option value="HELPDESK">HELPDESK</option>
+              <option value="">Pilih Jabatan</option>
               <option value="TEAM LEADER">TEAM LEADER</option>
               <option value="SITE MANAGER">SITE MANAGER</option>
               <option value="MANAGER">MANAGER</option>
               <option value="GENERAL MANAGER">GENERAL MANAGER</option>
               <option value="ASMAN">ASMAN</option>
-              <option value="HEAD OF SERVICE AREA">HEAD OF SERVICE AREA</option>
-              <option value="OFFICER OF SERVICE AREA">OFFICER OF SERVICE AREA</option>
-              <option value="KORLAP">KORLAP</option>
               <option value="SPV">SPV</option>
-              <option value="DAMAN">DAMAN</option>
-              <option value="OSD">OSD</option>
             </select>
           </div>
         </section>
