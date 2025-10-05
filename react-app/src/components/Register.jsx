@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import axios from 'axios';
 
-function Register() {
+function Register({ onRegister }) {
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -21,11 +21,12 @@ function Register() {
     e.preventDefault();
     try {
       const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/register`, formData);
-      alert(res.data.msg);
+      console.log(res.data.msg); // Log success message
+      onRegister(); // Navigate to login
     } catch (err) {
       if (err.response) {
         console.error(err.response.data);
-        alert(err.response.data.msg);
+        alert(err.response.data.msg); // Keep alert for errors
       } else {
         console.error(err);
         alert('Server error');
