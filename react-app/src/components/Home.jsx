@@ -65,7 +65,8 @@ function Home({ toggleSidebar }) { // Receive toggleSidebar as a prop
     const hasilDsc = `
       <p>${formData.insera} | ${formData.dsc}</p>
       ${formData.perner} / C4 Area / ${formData.jabatan} / Hasil Cek: ${formData.pengecekan}<br>
-      Sudah dikordinasikan dengan ${formData.jabatan} ${grupText} ${hasilPText}
+      Sudah dikordinasikan dengan ${formData.jabatan} ${grupText} ${hasilPText}<br>
+      <p>Hasil Carring: ${formData.carring} <br> Jam Carring: ${formData.jam}</p>
       <p>=====================================</p>
     `;
 
@@ -91,7 +92,7 @@ function Home({ toggleSidebar }) { // Receive toggleSidebar as a prop
     const hasiltankorDsc = `
       <p>${formData.insera} | ${formData.dsc}</p>
       <p>${formData.perner} / C4 Area / Tanpa kordinasi,${hasilPText} / Hasil Cek: ${formData.pengecekan}</p>
-      <p>${formData.carring}<br>${formData.jam}</p>
+      <p>Hasil Carring: ${formData.carring}<br> Jam Carring: ${formData.jam}</p>
       <p>=====================================</p>
     `;
 
