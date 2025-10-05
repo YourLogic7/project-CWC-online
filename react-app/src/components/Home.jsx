@@ -63,7 +63,7 @@ function Home({ toggleSidebar }) { // Receive toggleSidebar as a prop
     const grupText = viaGrup ? "Via grup," : "";
 
     const hasilDsc = `
-      <p>${formData.insera} ${formData.dsc}</p>
+      <p>${formData.insera} | ${formData.dsc}</p>
       ${formData.perner} / C4 Area / ${formData.jabatan} / Hasil Cek: ${formData.pengecekan}<br>
       Sudah dikordinasikan dengan ${formData.jabatan} ${grupText} ${hasilPText}
       <p>=====================================</p>
@@ -89,7 +89,7 @@ function Home({ toggleSidebar }) { // Receive toggleSidebar as a prop
     `;
 
     const hasiltankorDsc = `
-      <p>${formData.insera} ${formData.dsc}</p>
+      <p>${formData.insera} | ${formData.dsc}</p>
       <p>${formData.perner} / C4 Area / Tanpa kordinasi,${hasilPText} / Hasil Cek: ${formData.pengecekan}</p>
       <p>${formData.carring}<br>${formData.jam}</p>
       <p>=====================================</p>
