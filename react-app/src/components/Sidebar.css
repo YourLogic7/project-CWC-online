@@ -74,3 +74,33 @@
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
 }
+
+.dark-mode-toggle-container {
+  margin-top: 2rem;
+  padding: 0.75rem 1.5rem;
+}
+
+.dark-mode-switch {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: none;
+  border: none;
+  color: var(--text-dark);
+  cursor: pointer;
+  font-weight: 500;
+  width: 100%;
+  text-align: left;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  border-radius: 0 25px 25px 0;
+}
+
+.dark-mode-switch:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--primary-accent);
+}
+
+.dark-mode-switch svg {
+  width: 20px;
+  height: 20px;
+}

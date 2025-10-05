@@ -68,17 +68,11 @@ function App() {
     setSidebarOpen(!isSidebarOpen);
   };
 
-  useEffect(() => {
-    if (isAuthenticated && (location.pathname === '/' || location.pathname === '/dashboard')) {
-      setSidebarOpen(true);
-    } else {
-      setSidebarOpen(false);
-    }
-  }, [isAuthenticated, location.pathname]);
+
 
   return (
     <div className={`app-container ${isSidebarOpen ? 'sidebar-open' : ''}`}>
-      {isAuthenticated && <Sidebar isOpen={isSidebarOpen} onLogout={handleLogout} toggleSidebar={toggleSidebar} user={user} />}
+      {isAuthenticated && <Sidebar isOpen={isSidebarOpen} onLogout={handleLogout} toggleSidebar={toggleSidebar} user={user} isDarkMode={isDarkMode} toggleDarkMode={() => setIsDarkMode(prevMode => !prevMode)} />}
       <div className="main-content">
         <Routes>
           <Route path="/login" element={<Login onLogin={handleLogin} />} />
@@ -96,7 +90,7 @@ function App() {
           <Route
             path="/"
             element={
-              isAuthenticated ? <Home toggleSidebar={toggleSidebar} user={user} isDarkMode={isDarkMode} toggleDarkMode={() => setIsDarkMode(prevMode => !prevMode)} /> : <Navigate to="/login" />
+              isAuthenticated ? <Home toggleSidebar={toggleSidebar} user={user} /> : <Navigate to="/login" />
             }
           />
         </Routes>
