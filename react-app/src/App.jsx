@@ -4,6 +4,7 @@ import Sidebar from './components/Sidebar.jsx';
 import Home from './components/Home.jsx';
 import Login from './components/Login.jsx';
 import Register from './components/Register.jsx';
+import SuperAdminRegister from './components/SuperAdminRegister.jsx';
 import { jwtDecode } from 'jwt-decode';
 import './App.css';
 
@@ -59,6 +60,7 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login onLogin={handleLogin} />} />
           <Route path="/register" element={<Register onRegister={handleRegister} />} />
+          <Route path="/superadmin" element={<SuperAdminRegister onRegister={handleRegister} />} />
           <Route
             path="/"
             element={
