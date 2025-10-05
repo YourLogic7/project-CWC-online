@@ -4,6 +4,7 @@ import Sidebar from './components/Sidebar.jsx';
 import Home from './components/Home.jsx';
 import Login from './components/Login.jsx';
 import Register from './components/Register.jsx';
+import Dashboard from './components/Dashboard.jsx';
 import { jwtDecode } from 'jwt-decode';
 import './App.css';
 
@@ -17,9 +18,14 @@ function App() {
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
-      const decodedToken = jwtDecode(token);
-      setUser(decodedToken.user);
-      setIsAuthenticated(true);
+      try {
+        const decodedToken = jwtDecode(token);
+        setUser(decodedToken.user);
+        setIsAuthenticated(true);
+      } catch (error) {
+        // Handle invalid token
+        localStorage.removeItem('token');
+      }
     }
   }, []);
 
@@ -50,15 +56,25 @@ function App() {
   };
 
   // Determine if Sidebar should be shown
-  const showSidebar = location.pathname === '/';
+  const showSidebar = location.pathname === '/' || location.pathname === '/dashboard';
 
   return (
     <div className={`app-container ${isSidebarOpen ? 'sidebar-open' : ''}`}>
-      {showSidebar && <Sidebar isOpen={isSidebarOpen} onLogout={handleLogout} toggleSidebar={toggleSidebar} />}
+      {showSidebar && <Sidebar isOpen={isSidebarOpen} onLogout={handleLogout} toggleSidebar={toggleSidebar} user={user} />}
       <div className="main-content">
         <Routes>
           <Route path="/login" element={<Login onLogin={handleLogin} />} />
           <Route path="/register" element={<Register onRegister={handleRegister} />} />
+          <Route
+            path="/dashboard"
+            element={
+              isAuthenticated && user?.role === 'Team Leader' ? (
+                <Dashboard />
+              ) : (
+                <Navigate to="/" />
+              )
+            }
+          />
           <Route
             path="/"
             element={

@@ -24,7 +24,7 @@ const LogoutIcon = () => (
   </svg>
 );
 
-function Sidebar({ isOpen, onLogout, toggleSidebar }) {
+function Sidebar({ isOpen, onLogout, toggleSidebar, user }) {
   return (
     <div className={`sidebar ${isOpen ? 'open' : ''}`}>
       <ul className="sidebar-menu">
@@ -34,12 +34,14 @@ function Sidebar({ isOpen, onLogout, toggleSidebar }) {
             <span>Home</span>
           </Link>
         </li>
-        <li>
-          <Link to="/dashboard" onClick={toggleSidebar}>
-            <DashboardIcon />
-            <span>Dashboard</span>
-          </Link>
-        </li>
+        {user && user.role === 'Team Leader' && (
+          <li>
+            <Link to="/dashboard" onClick={toggleSidebar}>
+              <DashboardIcon />
+              <span>Dashboard</span>
+            </Link>
+          </li>
+        )}
         <li>
           <button onClick={onLogout} className="logout-button">
             <LogoutIcon />
