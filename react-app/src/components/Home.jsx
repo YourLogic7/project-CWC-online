@@ -127,14 +127,14 @@ function Home({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
 
     if (radioChoice === 'tanpa-kordinasi') {
       // Tanpa Kordinasi format
-      generatedDsc = `\n        <p>${insera} ${dsc}</p>\n        <p>${perner} / C4 Area / Tanpa kordinasi,${hasilPText} / Hasil Cek: ${pengecekan}</p>\n        <p>${carring}<br>${jam}</p>\n        <p>=====================================</p>\n      `;
+      generatedDsc = `\n<p>${insera} ${dsc}</p>\n<p>${perner} / C4 Area / Tanpa kordinasi,${hasilPText} / Hasil Cek: ${pengecekan}</p>\n<p>Hasil Carring: ${carring}<br>Jam Carring: ${jam}</p>\n<p>=====================================</p>\n`;
 
-      generatedInsera = `\n        <p>${headline}</p>\n        Nama Pelanggan / CP: ${pelanggan} ${cp}<br>\n        No. Tiket/ No Layanan: ${insera} ${dsc} / ${layanan}<br>\n        Resume Case: ${resume}<br>\n        Report Date: ${alamat}<br>\n        <p></p>\n        Hasil Pengecekan:<br>\n        -Cek: ${pengecekan}<br>\n        <p></p>\n        Hasil Kordinasi:<br>\n        - Tanpa kordinasi,  ${hasilPText}<br>\n        <p></p>\n        Hasil Carring: ${carring}<br>\n        Jam Carring: ${jam}<br>\n        <p> </p>\n        Demikian informasinya<br>\n        Terima kasih.\n      `;
+      generatedInsera = `\n<p>${headline}</p>\nNama Pelanggan / CP: ${pelanggan} ${cp}\nNo. Tiket/ No Layanan: ${insera} ${dsc} / ${layanan}\nResume Case: ${resume}\nReport Date: ${alamat}\n<p></p>\nHasil Pengecekan:\n-Cek: ${pengecekan}\n<p></p>\nHasil Kordinasi:\n- Tanpa kordinasi,  ${hasilPText}\n<p></p>\n Hasil Carring: ${carring}\nJam Carring: ${jam}\n\nDemikian informasinya\nTerima kasih.\n`;
     } else {
       // Kordinasi format
-      generatedDsc = `\n        <p>${insera} ${dsc}</p>\n        ${perner} / C4 Area / ${jabatan} / Hasil Cek: ${pengecekan}<br>\n        Sudah dikordinasikan dengan ${jabatan} ${grupText} ${hasilPText}\n        <p>=====================================</p>\n      `;
+      generatedDsc = `\n<p>${insera} ${dsc}</p>\n${perner} / C4 Area / ${jabatan} / Hasil Cek: ${pengecekan}\nSudah dikordinasikan dengan ${unitSolver} ${jabatan} ${grupText} ${hasilPText}\n<p>=====================================</p>\n`;
 
-      generatedInsera = `\n        <p>${headline}</p>\n        Nama Pelanggan / CP: ${pelanggan} ${cp}<br>\n        No. Tiket/ No Layanan: ${insera} ${dsc} / ${layanan}<br>\n        Resume Case: ${resume}<br>\n        Report Date: ${alamat}<br>\n        <p></p>\n        Hasil Pengecekan:<br>\n        -Cek: ${pengecekan}<br>\n        Hasil Kordinasi:<br>\n        Sudah dikordinasikan dengan ${jabatan} ${grupText} ${hasilPText}</p>\n        <p></p>\n        Hasil Carring: ${carring}<br>\n        Jam Carring: ${jam}<br>\n        <p></p>\n        Demikian informasinya<br>\n        Terima kasih.\n      `;
+      generatedInsera = `\n<p>${headline}</p>\nNama Pelanggan / CP: ${pelanggan} ${cp}\nNo. Tiket/ No Layanan: ${insera} ${dsc} / ${layanan}\nResume Case: ${resume}\nReport Date: ${alamat}\n<p></p>\nHasil Pengecekan:\n-Cek: ${pengecekan}\nHasil Kordinasi:\nSudah dikordinasikan dengan ${jabatan} ${grupText} ${hasilPText}</p>\n<p></p>\nHasil Carring: ${carring}\nJam Carring: ${jam}\n<p></p>\nDemikian informasinya\nTerima kasih.\n`;
     }
 
     setResult({ dsc: generatedDsc, insera: generatedInsera });
