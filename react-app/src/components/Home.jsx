@@ -38,12 +38,6 @@ function Home({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
   const [submittedData, setSubmittedData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
-  const [filterByToday, setFilterByToday] = useState(false);
-
-  // Calculations for Page Performance
-  const totalSubmissions = submittedData.length;
-  const uniqueDays = new Set(submittedData.map(submission => new Date(submission.createdAt).toDateString()));
-  const averageSubmissionsPerDay = uniqueDays.size > 0 ? (totalSubmissions / uniqueDays.size).toFixed(2) : 0;
 
   useEffect(() => {
     fetchSubmissions();
@@ -54,23 +48,16 @@ function Home({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
     setCurrentPage(1); // Reset to first page when items per page changes
   };
 
-  const handleFilterByTodayChange = (e) => {
-    setFilterByToday(e.target.checked);
-    setCurrentPage(1); // Reset to first page when filter changes
-  };
-
-  // Filter data by today's date if filterByToday is true
-  const filteredSubmissions = filterByToday
-    ? submittedData.filter(submission => {
-        const submissionDate = new Date(submission.createdAt);
-        const today = new Date();
-        return (
-          submissionDate.getDate() === today.getDate() &&
-          submissionDate.getMonth() === today.getMonth() &&
-          submissionDate.getFullYear() === today.getFullYear()
-        );
-      })
-    : submittedData;
+  // Filter data by today's date
+  const filteredSubmissions = submittedData.filter(submission => {
+    const submissionDate = new Date(submission.createdAt);
+    const today = new Date();
+    return (
+      submissionDate.getDate() === today.getDate() &&
+      submissionDate.getMonth() === today.getMonth() &&
+      submissionDate.getFullYear() === today.getFullYear()
+    );
+  });
 
   // Derived state for pagination
   const indexOfLastItem = currentPage * itemsPerPage;

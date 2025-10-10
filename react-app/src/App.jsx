@@ -48,6 +48,7 @@ function App() {
     if (token) {
       const decodedToken = jwtDecode(token);
       setUser(decodedToken.user);
+      console.log('User object after login:', decodedToken.user);
       setIsAuthenticated(true);
       navigate('/');
     }
