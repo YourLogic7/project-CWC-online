@@ -124,7 +124,6 @@ function Performance({ toggleSidebar, isDarkMode, toggleDarkMode }) {
             </div>
           </div>
           <div className="table-wrapper">
-          <div className="table-wrapper">
             <table className="data-table">
               <thead>
                 <tr>
@@ -185,7 +184,6 @@ function Performance({ toggleSidebar, isDarkMode, toggleDarkMode }) {
                 ))}
               </tbody>
             </table>
-          </div>
           </div>
           <div className="pagination">
             <button onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))} disabled={currentPage === 1}>Previous</button>

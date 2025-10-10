@@ -46,19 +46,22 @@
   .table-wrapper {
     overflow: auto;
     max-height: 500px;
-  }
-  
+    max-width: 60%;
+  }  
   .performance-table {
-    width: 100%;
+    width: 60%;
     border-collapse: collapse;
   }  
   .performance-table th,
   .performance-table td {
-    padding: 0.75rem 1rem;
-    border-bottom: 1px solid var(--border-color);
-    text-align: left;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border-color);
+      text-align: left;
   }
   
+  body.dark-mode .performance-table td {
+    color: #a0aec0; /* A darker shade for dark mode */
+  }  
   .performance-table th {
     font-weight: bold;
     background-color: var(--table-header-background-color);

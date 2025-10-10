@@ -15,7 +15,6 @@ function Header({ toggleSidebar }) {
         <HamburgerIcon />
       </button>
       {/* You can add a title or other header elements here */}
-      <h1 className="header-title">Home</h1>
     </header>
   );
 }

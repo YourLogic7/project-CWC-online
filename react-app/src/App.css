@@ -16,43 +16,43 @@
 /* Dark Mode Styles */
 body.dark-mode {
   background-color: #1a202c;
-  color: #000000; /* Changed to black */
+  color: var(--text-dark);
 }
 
 body.dark-mode .app-header {
   background-color: #2d3748;
-  color: #000000; /* Changed to black */
+  color: var(--text-dark);
 }
 
 body.dark-mode .sidebar {
   background-color: #2d3748;
-  color: #000000; /* Changed to black */
+  color: var(--text-dark);
 }
 
 body.dark-mode .sidebar a {
-  color: #000000; /* Changed to black */
+  color: var(--text-dark);
 }
 
 body.dark-mode .stat-card {
   background-color: #4a5568;
-  color: #000000; /* Changed to black */
+  color: var(--text-dark);
 }
 
 body.dark-mode input, body.dark-mode textarea, body.dark-mode select {
   background-color: #4a5568;
-  color: #000000; /* Changed to black */
+  color: var(--text-dark);
   border-color: #6b7280;
 }
 
 body.dark-mode button {
   background-color: #4a5568;
-  color: #000000; /* Changed to black */
+  color: var(--text-dark);
   border-color: #6b7280;
 }
 
 body.dark-mode .pagination button {
   background-color: #4a5568;
-  color: #000000; /* Changed to black */
+  color: var(--text-dark);
   border-color: #6b7280;
 }
 
