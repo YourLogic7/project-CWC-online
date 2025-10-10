@@ -69,7 +69,7 @@ function Sidebar({ isOpen, onLogout, toggleSidebar, user, isDarkMode, toggleDark
             </Link>
           </li>
         )}
-        {user && user.role === 'Agent' && (
+                {user && user.role.toLowerCase() === 'agent' && (
           <li>
             <Link to="/performance" onClick={toggleSidebar}>
               <PerformanceIcon />

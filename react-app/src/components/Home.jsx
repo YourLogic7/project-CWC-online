@@ -339,7 +339,7 @@ function Home({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
         </div>
       )}
 
-      {user && user.role === 'Agent' && (
+      {user && user.role.toLowerCase() === 'agent' && (
         <section className="page-performance-section">
           <h2>Page Performance</h2>
           <div className="stats-grid">
