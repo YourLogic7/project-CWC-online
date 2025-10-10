@@ -3,9 +3,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import * as XLSX from 'xlsx';
 import Papa from 'papaparse';
+import Header from './Header';
 import './Performance.css';
 
-function Performance() {
+function Performance({ toggleSidebar, isDarkMode, toggleDarkMode }) {
   const [submissions, setSubmissions] = useState([]);
   const [stats, setStats] = useState({ total: 0, average: 0 });
   const [currentPage, setCurrentPage] = useState(1);
@@ -85,6 +86,7 @@ function Performance() {
 
   return (
     <div className="performance-container">
+      <Header toggleSidebar={toggleSidebar} isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
       <div className="performance-header">
         <h1>Performance</h1>
       </div>
@@ -121,6 +123,7 @@ function Performance() {
               </select>
             </div>
           </div>
+          <div className="table-wrapper">
           <div className="table-wrapper">
             <table className="data-table">
               <thead>
@@ -182,6 +185,7 @@ function Performance() {
                 ))}
               </tbody>
             </table>
+          </div>
           </div>
           <div className="pagination">
             <button onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))} disabled={currentPage === 1}>Previous</button>

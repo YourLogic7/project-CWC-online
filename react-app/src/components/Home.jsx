@@ -39,6 +39,11 @@ function Home({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
 
+  // Calculations for Page Performance
+  const totalSubmissions = submittedData.length;
+  const uniqueDays = new Set(submittedData.map(submission => new Date(submission.createdAt).toDateString()));
+  const averageSubmissionsPerDay = uniqueDays.size > 0 ? (totalSubmissions / uniqueDays.size).toFixed(2) : 0;
+
   useEffect(() => {
     fetchSubmissions();
   }, []);
@@ -92,7 +97,7 @@ function Home({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const { perner, headline, layanan, dsc, insera, pelanggan, cp, resume, alamat, pengecekan, jabatan, carring, jam, inputUser, kip, noPermintaan, statusPermintaan, detailPermintaan, namaSolver, cpSolver } = formData;
+    const { perner, headline, layanan, dsc, insera, pelanggan, cp, resume, alamat, pengecekan, jabatan, carring, jam, inputUser, kip, noPermintaan, statusPermintaan, detailPermintaan, namaSolver, cpSolver, unitSolver } = formData;
 
     let hasilPText = '';
     if (radioChoice === 'radioBiasa') {
@@ -121,7 +126,7 @@ function Home({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
       // Kordinasi format
       generatedDsc = `\n<p>${insera} ${dsc}</p>\n${perner} / C4 Area / ${jabatan} / Hasil Cek: ${pengecekan}\nSudah dikordinasikan dengan ${unitSolver} ${jabatan} ${grupText} ${hasilPText}\n<p>=====================================</p>\n`;
 
-      generatedInsera = `\n<p>${headline}</p>\nNama Pelanggan / CP: ${pelanggan} ${cp}\nNo. Tiket/ No Layanan: ${insera} ${dsc} / ${layanan}\nResume Case: ${resume}\nReport Date: ${alamat}\n<p></p>\nHasil Pengecekan:\n-Cek: ${pengecekan}\nHasil Kordinasi:\nSudah dikordinasikan dengan ${jabatan} ${grupText} ${hasilPText}</p>\n<p></p>\nHasil Carring: ${carring}\nJam Carring: ${jam}\n<p></p>\nDemikian informasinya\nTerima kasih.\n`;
+      generatedInsera = `\n<p>${headline}</p>\nNama Pelanggan / CP: ${pelanggan} ${cp}\nNo. Tiket/ No Layanan: ${insera} ${dsc} / ${layanan}\nResume Case: ${resume}\nReport Date: ${alamat}\n<p></p>\nHasil Pengecekan:\n-Cek: ${pengecekan}\nHasil Kordinasi:\nSudah dikordinasikan dengan ${unitSolver} ${jabatan} ${grupText} ${hasilPText}</p>\n<p></p>\nHasil Carring: ${carring}\nJam Carring: ${jam}\n<p></p>\nDemikian informasinya\nTerima kasih.\n`;
     }
 
     setResult({ dsc: generatedDsc, insera: generatedInsera });
@@ -136,10 +141,37 @@ function Home({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
         headers: { 'x-auth-token': token },
       });
       fetchSubmissions();
-      // Reset form logic...
+      resetForm();
     } catch (err) {
       console.error(err);
     }
+  };
+
+  const resetForm = () => {
+    setFormData(prevState => ({
+      perner: prevState.perner,
+      jabatan: prevState.jabatan,
+      headline: '',
+      layanan: '',
+      dsc: '',
+      insera: '',
+      pelanggan: '',
+      cp: '',
+      resume: '',
+      alamat: '',
+      pengecekan: '',
+      carring: '',
+      jam: '',
+      inputUser: '',
+      jabatanSolver: '',
+      unitSolver: '',
+      kip: '',
+      noPermintaan: '',
+      statusPermintaan: '',
+      detailPermintaan: '',
+      namaSolver: '',
+      cpSolver: ''
+    }));
   };
 
   const handleExport = (format) => {
@@ -359,10 +391,6 @@ function Home({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
                     <option value="100">100</option>
                     <option value={submittedData.length}>All</option>
                   </select>
-                </div>
-                <div>
-                  <input type="checkbox" id="filter-by-today" checked={filterByToday} onChange={handleFilterByTodayChange} />
-                  <label htmlFor="filter-by-today">Show only today's data</label>
                 </div>
               </div>
               <div className="table-wrapper">

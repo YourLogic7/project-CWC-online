@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Header from './Header';
 import './Dashboard.css'; // Import the new CSS file
 
-function Dashboard() {
+function Dashboard({ toggleSidebar, isDarkMode, toggleDarkMode }) {
   const [submissions, setSubmissions] = useState([]);
   const [stats, setStats] = useState({ total: 0, average: 0, userCounts: {} });
   const [userList, setUserList] = useState([]);
@@ -64,6 +65,7 @@ function Dashboard() {
 
   return (
     <div className="dashboard-container">
+      <Header toggleSidebar={toggleSidebar} isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
       <div className="dashboard-header">
         <h1>Dashboard</h1>
         <div className="filter-container">

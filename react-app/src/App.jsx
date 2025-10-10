@@ -48,7 +48,6 @@ function App() {
     if (token) {
       const decodedToken = jwtDecode(token);
       setUser(decodedToken.user);
-      console.log('User object after login:', decodedToken.user);
       setIsAuthenticated(true);
       navigate('/');
     }
@@ -83,7 +82,7 @@ function App() {
             path="/dashboard"
             element={
               isAuthenticated && user?.role === 'Team Leader' ? (
-                <Dashboard />
+                <Dashboard toggleSidebar={toggleSidebar} isDarkMode={isDarkMode} toggleDarkMode={() => setIsDarkMode(prevMode => !prevMode)} />
               ) : (
                 <Navigate to="/" />
               )
@@ -92,13 +91,13 @@ function App() {
           <Route
             path="/"
             element={
-              isAuthenticated ? <Home toggleSidebar={toggleSidebar} user={user} /> : <Navigate to="/login" />
+              isAuthenticated ? <Home toggleSidebar={toggleSidebar} user={user} isDarkMode={isDarkMode} toggleDarkMode={() => setIsDarkMode(prevMode => !prevMode)} /> : <Navigate to="/login" />
             }
           />
           <Route
             path="/performance"
             element={
-              isAuthenticated ? <Performance /> : <Navigate to="/login" />
+              isAuthenticated ? <Performance toggleSidebar={toggleSidebar} isDarkMode={isDarkMode} toggleDarkMode={() => setIsDarkMode(prevMode => !prevMode)} /> : <Navigate to="/login" />
             }
           />
         </Routes>
