@@ -136,7 +136,7 @@ function Performance({ toggleSidebar, isDarkMode, toggleDarkMode }) {
                   <th>Pelanggan</th>
                   <th>CP</th>
                   <th>Resume</th>
-                  <th>Alamat</th>
+                  <th>Report Date</th>
                   <th>Pengecekan</th>
                   <th>Jabatan</th>
                   <th>Carring</th>
@@ -164,7 +164,7 @@ function Performance({ toggleSidebar, isDarkMode, toggleDarkMode }) {
                     <td>{data.pelanggan}</td>
                     <td>{data.cp}</td>
                     <td>{data.resume}</td>
-                    <td>{data.alamat}</td>
+                    <td>{data.reportDate}</td>
                     <td>{data.pengecekan}</td>
                     <td>{data.jabatan}</td>
                     <td>{data.carring}</td>

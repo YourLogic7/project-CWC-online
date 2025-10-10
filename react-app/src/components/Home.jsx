@@ -15,7 +15,7 @@ function Home({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
     pelanggan: '',
     cp: '',
     resume: '',
-    alamat: '',
+    reportDate: '',
     pengecekan: '',
     jabatan: '',
     carring: '',
@@ -92,7 +92,7 @@ function Home({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const { perner, headline, layanan, dsc, insera, pelanggan, cp, resume, alamat, pengecekan, jabatan, carring, jam, inputUser, kip, noPermintaan, statusPermintaan, detailPermintaan, namaSolver, cpSolver, unitSolver } = formData;
+    const { perner, headline, layanan, dsc, insera, pelanggan, cp, resume, reportDate, pengecekan, jabatan, carring, jam, inputUser, kip, noPermintaan, statusPermintaan, detailPermintaan, namaSolver, cpSolver, unitSolver } = formData;
 
     let hasilPText = '';
     if (radioChoice === 'radioBiasa') {
@@ -116,12 +116,12 @@ function Home({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
       // Tanpa Kordinasi format
       generatedDsc = `\n<p>${insera} ${dsc}</p>\n<p>${perner} / C4 Area / Tanpa kordinasi,${hasilPText} / Hasil Cek: ${pengecekan}</p>\n<p>Hasil Carring: ${carring}<br>Jam Carring: ${jam}</p>\n<p>=====================================</p>\n`;
 
-      generatedInsera = `\n<p>${headline}</p>\nNama Pelanggan / CP: ${pelanggan} ${cp}\nNo. Tiket/ No Layanan: ${insera} ${dsc} / ${layanan}\nResume Case: ${resume}\nReport Date: ${alamat}\n<p></p>\nHasil Pengecekan:\n-Cek: ${pengecekan}\n<p></p>\nHasil Kordinasi:\n- Tanpa kordinasi,  ${hasilPText}\n<p></p>\n Hasil Carring: ${carring}\nJam Carring: ${jam}\n\nDemikian informasinya\nTerima kasih.\n`;
+      generatedInsera = `\n<p>${headline}</p>\nNama Pelanggan / CP: ${pelanggan} ${cp}\nNo. Tiket/ No Layanan: ${insera} ${dsc} / ${layanan}\nResume Case: ${resume}\nReport Date: ${reportDate}\n<p></p>\nHasil Pengecekan:\n-Cek: ${pengecekan}\n<p></p>\nHasil Kordinasi:\n- Tanpa kordinasi,  ${hasilPText}\n<p></p>\n Hasil Carring: ${carring}\nJam Carring: ${jam}\n\nDemikian informasinya\nTerima kasih.\n`;
     } else {
       // Kordinasi format
       generatedDsc = `\n<p>${insera} ${dsc}</p>\n${perner} / C4 Area / ${jabatan} / Hasil Cek: ${pengecekan}\nSudah dikordinasikan dengan ${unitSolver} ${jabatan} ${grupText} ${hasilPText}\n<p>=====================================</p>\n`;
 
-      generatedInsera = `\n<p>${headline}</p>\nNama Pelanggan / CP: ${pelanggan} ${cp}\nNo. Tiket/ No Layanan: ${insera} ${dsc} / ${layanan}\nResume Case: ${resume}\nReport Date: ${alamat}\n<p></p>\nHasil Pengecekan:\n-Cek: ${pengecekan}\nHasil Kordinasi:\nSudah dikordinasikan dengan ${unitSolver} ${jabatan} ${grupText} ${hasilPText}</p>\n<p></p>\nHasil Carring: ${carring}\nJam Carring: ${jam}\n<p></p>\nDemikian informasinya\nTerima kasih.\n`;
+      generatedInsera = `\n<p>${headline}</p>\nNama Pelanggan / CP: ${pelanggan} ${cp}\nNo. Tiket/ No Layanan: ${insera} ${dsc} / ${layanan}\nResume Case: ${resume}\nReport Date: ${reportDate}\n<p></p>\nHasil Pengecekan:\n-Cek: ${pengecekan}\nHasil Kordinasi:\nSudah dikordinasikan dengan ${unitSolver} ${jabatan} ${grupText} ${hasilPText}</p>\n<p></p>\nHasil Carring: ${carring}\nJam Carring: ${jam}\n<p></p>\nDemikian informasinya\nTerima kasih.\n`;
     }
 
     setResult({ dsc: generatedDsc, insera: generatedInsera });
@@ -153,7 +153,7 @@ function Home({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
       pelanggan: '',
       cp: '',
       resume: '',
-      alamat: '',
+      reportDate: '',
       pengecekan: '',
       carring: '',
       jam: '',
@@ -257,8 +257,8 @@ function Home({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
             <label htmlFor="resume">Resume Case / Report Date:</label>
             <input type="text" id="resume" name="resume" placeholder="Isi resume case nya coy.." value={formData.resume} onChange={handleChange} />
             
-            <label htmlFor="alamat"></label>
-            <input type="text" id="alamat" name="alamat" placeholder="contoh: 2025-10-04 15:00:35" value={formData.alamat} onChange={handleChange} /><br /><br />
+            <label htmlFor="reportDate"></label>
+            <input type="text" id="reportDate" name="reportDate" placeholder="contoh: 2025-10-04 15:00:35" value={formData.reportDate} onChange={handleChange} /><br /><br />
           </div>
 
           <div id="data">
@@ -382,7 +382,28 @@ function Home({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
                     <tr>
                       <th>Nama</th>
                       <th>Timestamp</th>
-                      {Object.keys(formData).map(key => <th key={key}>{key}</th>)}
+                      <th>Perner</th>
+                      <th>Headline</th>
+                      <th>Layanan</th>
+                      <th>DSC</th>
+                      <th>INSERA</th>
+                      <th>Pelanggan</th>
+                      <th>CP</th>
+                      <th>Resume</th>
+                      <th>Report Date</th>
+                      <th>Pengecekan</th>
+                      <th>Jabatan</th>
+                      <th>Carring</th>
+                      <th>Jam</th>
+                      <th>Input User</th>
+                      <th>Jabatan Solver</th>
+                      <th>Unit Solver</th>
+                      <th>KIP</th>
+                      <th>No Permintaan</th>
+                      <th>Status Permintaan</th>
+                      <th>Detail Permintaan</th>
+                      <th>Nama Solver</th>
+                      <th>CP Solver</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -390,11 +411,28 @@ function Home({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
                       <tr key={index}>
                         <td>{data.user.nama}</td>
                         <td>{new Date(data.createdAt).toLocaleString()}</td>
-                        {Object.keys(formData).map(key => (
-                          <td key={key} className={key === 'headline' ? 'headline-cell' : ''}>
-                            {data[key]}
-                          </td>
-                        ))}
+                        <td>{data.perner}</td>
+                        <td>{data.headline}</td>
+                        <td>{data.layanan}</td>
+                        <td>{data.dsc}</td>
+                        <td>{data.insera}</td>
+                        <td>{data.pelanggan}</td>
+                        <td>{data.cp}</td>
+                        <td>{data.resume}</td>
+                        <td>{data.reportDate}</td>
+                        <td>{data.pengecekan}</td>
+                        <td>{data.jabatan}</td>
+                        <td>{data.carring}</td>
+                        <td>{data.jam}</td>
+                        <td>{data.inputUser}</td>
+                        <td>{data.jabatanSolver}</td>
+                        <td>{data.unitSolver}</td>
+                        <td>{data.kip}</td>
+                        <td>{data.noPermintaan}</td>
+                        <td>{data.statusPermintaan}</td>
+                        <td>{data.detailPermintaan}</td>
+                        <td>{data.namaSolver}</td>
+                        <td>{data.cpSolver}</td>
                       </tr>
                     ))}
                   </tbody>
