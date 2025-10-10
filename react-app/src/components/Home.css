@@ -77,6 +77,9 @@
   padding: 1.5rem;
   border-radius: 8px;
   box-shadow: var(--shadow-md);
+  max-width: 60%;
+  margin-left: 0;
+  margin-right: auto;
 }
 
 body.dark-mode .submitted-data-container {
@@ -93,7 +96,7 @@ body.dark-mode .submitted-data-container {
   overflow-x: auto;
   overflow-y: auto;
   max-height: 500px;
-  max-width: 50%;
+  width: 100%;
 }
 
 .data-table {

@@ -41,8 +41,9 @@
     padding: 1.5rem;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 50%;
-    margin: 0 auto;
+    max-width: 60%;
+    margin-left: 0;
+    margin-right: auto;
   }
 
 body.dark-mode .table-container {
@@ -52,6 +53,7 @@ body.dark-mode .table-container {
   .table-wrapper {
     overflow: auto;
     max-height: 500px;
+    width: 100%;
   }  
   .performance-table {
     width: 100%;
