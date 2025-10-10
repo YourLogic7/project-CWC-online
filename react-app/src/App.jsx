@@ -5,6 +5,7 @@ import Home from './components/Home.jsx';
 import Login from './components/Login.jsx';
 import Register from './components/Register.jsx';
 import Dashboard from './components/Dashboard.jsx';
+import Performance from './components/Performance.jsx';
 import { jwtDecode } from 'jwt-decode';
 import './App.css';
 
@@ -91,6 +92,12 @@ function App() {
             path="/"
             element={
               isAuthenticated ? <Home toggleSidebar={toggleSidebar} user={user} /> : <Navigate to="/login" />
+            }
+          />
+          <Route
+            path="/performance"
+            element={
+              isAuthenticated ? <Performance /> : <Navigate to="/login" />
             }
           />
         </Routes>

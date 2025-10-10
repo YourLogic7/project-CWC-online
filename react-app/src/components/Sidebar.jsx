@@ -39,6 +39,12 @@ const SunIcon = () => (
   </svg>
 );
 
+const PerformanceIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 20V10M18 20V4M6 20V16"/>
+  </svg>
+);
+
 const MoonIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
@@ -60,6 +66,14 @@ function Sidebar({ isOpen, onLogout, toggleSidebar, user, isDarkMode, toggleDark
             <Link to="/dashboard" onClick={toggleSidebar}>
               <DashboardIcon />
               <span>Dashboard</span>
+            </Link>
+          </li>
+        )}
+        {user && user.role === 'Agent' && (
+          <li>
+            <Link to="/performance" onClick={toggleSidebar}>
+              <PerformanceIcon />
+              <span>Performance</span>
             </Link>
           </li>
         )}
