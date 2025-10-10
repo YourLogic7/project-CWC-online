@@ -130,7 +130,6 @@ function Performance({ toggleSidebar, isDarkMode, toggleDarkMode }) {
                   <th>Nama</th>
                   <th>Timestamp</th>
                   <th>Perner</th>
-                  <th>Headline</th>
                   <th>Layanan</th>
                   <th>DSC</th>
                   <th>INSERA</th>
@@ -159,7 +158,6 @@ function Performance({ toggleSidebar, isDarkMode, toggleDarkMode }) {
                     <td>{data.user.nama}</td>
                     <td>{new Date(data.createdAt).toLocaleString()}</td>
                     <td>{data.perner}</td>
-                    <td>{data.headline}</td>
                     <td>{data.layanan}</td>
                     <td>{data.dsc}</td>
                     <td>{data.insera}</td>
