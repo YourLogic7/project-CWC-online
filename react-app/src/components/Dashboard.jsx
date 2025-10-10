@@ -100,24 +100,26 @@ function Dashboard({ toggleSidebar, isDarkMode, toggleDarkMode }) {
       {selectedUser === 'all' && (
         <div className="table-container">
           <h2>Submissions by User</h2>
-          <table className="dashboard-table">
-            <thead>
-              <tr>
-                <th>User Name</th>
-                <th>Number of Submissions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {Object.entries(stats.userCounts)
-                .sort(([, a], [, b]) => b - a)
-                .map(([userName, count]) => (
-                  <tr key={userName}>
-                    <td>{userName}</td>
-                    <td>{count}</td>
-                  </tr>
-              ))}
-            </tbody>
-          </table>
+          <div className="table-wrapper">
+            <table className="data-table">
+              <thead>
+                <tr>
+                  <th>User Name</th>
+                  <th>Number of Submissions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {Object.entries(stats.userCounts)
+                  .sort(([, a], [, b]) => b - a)
+                  .map(([userName, count]) => (
+                    <tr key={userName}>
+                      <td>{userName}</td>
+                      <td>{count}</td>
+                    </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       )}
     </div>

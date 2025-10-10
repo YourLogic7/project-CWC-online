@@ -41,15 +41,20 @@
     padding: 1.5rem;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 50%;
+    margin: 0 auto;
   }
+
+body.dark-mode .table-container {
+  background-color: var(--card-background-dark);
+}
   
   .table-wrapper {
     overflow: auto;
     max-height: 500px;
-    max-width: 60%;
   }  
   .performance-table {
-    width: 60%;
+    width: 100%;
     border-collapse: collapse;
   }  
   .performance-table th,
@@ -62,12 +67,19 @@
   body.dark-mode .performance-table td {
     color: #a0aec0; /* A darker shade for dark mode */
   }  
+  body.dark-mode .performance-table th {
+    color: var(--text-dark);
+  }
+  
+  body.dark-mode .performance-table tbody tr:hover {
+    background-color: #4a5568;
+  }
+  
   .performance-table th {
-    font-weight: bold;
-    background-color: var(--table-header-background-color);
+      font-weight: bold;
+      background-color: var(--table-header-background-color);
   }
   
   .performance-table tbody tr:hover {
-    background-color: var(--table-row-hover-color);
-  }
-  
+      background-color: var(--table-row-hover-color);
+  }  
