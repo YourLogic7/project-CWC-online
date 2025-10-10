@@ -39,11 +39,6 @@ function Home({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
 
-  // Calculations for Page Performance
-  const totalSubmissions = submittedData.length;
-  const uniqueDays = new Set(submittedData.map(submission => new Date(submission.createdAt).toDateString()));
-  const averageSubmissionsPerDay = uniqueDays.size > 0 ? (totalSubmissions / uniqueDays.size).toFixed(2) : 0;
-
   useEffect(() => {
     fetchSubmissions();
   }, []);
@@ -360,18 +355,6 @@ function Home({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
 
       {user && user.role.toLowerCase() === 'agent' && (
         <section className="page-performance-section">
-          <h2>Page Performance</h2>
-          <div className="stats-grid">
-            <div className="stat-card">
-              <h3>Total Submissions</h3>
-              <p>{totalSubmissions}</p>
-            </div>
-            <div className="stat-card">
-              <h3>Average Submissions per Day</h3>
-              <p>{averageSubmissionsPerDay}</p>
-            </div>
-          </div>
-
           {submittedData.length > 0 && (
             <div className="submitted-data-container">
               <h2>All Submitted Data</h2>
