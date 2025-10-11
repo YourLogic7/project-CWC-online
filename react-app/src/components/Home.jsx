@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import EditModal from './EditModal';
+import DeleteConfirmationModal from './DeleteConfirmationModal';
 import axios from 'axios';
 import * as XLSX from 'xlsx';
 import Papa from 'papaparse';
@@ -42,15 +43,30 @@ function Home({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [selectedSubmission, setSelectedSubmission] = useState(null);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [submissionToDelete, setSubmissionToDelete] = useState(null);
 
-  const handleRowClick = (submission) => {
-    setSelectedSubmission(submission);
-    setShowModal(true);
+  const handleDeleteClick = (submissionId) => {
+    setSubmissionToDelete(submissionId);
+    setShowDeleteModal(true);
   };
 
-  const handleCloseModal = () => {
-    setShowModal(false);
-    setSelectedSubmission(null);
+  const handleCloseDeleteModal = () => {
+    setShowDeleteModal(false);
+    setSubmissionToDelete(null);
+  };
+
+  const handleConfirmDelete = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/submissions/${submissionToDelete}`, {
+        headers: { 'x-auth-token': token },
+      });
+      setSubmittedData(submittedData.filter(item => item._id !== submissionToDelete));
+      handleCloseDeleteModal();
+    } catch (error) {
+      console.error('Error deleting submission:', error);
+    }
   };
 
   const handleUpdateSubmission = (updatedSubmission) => {
@@ -451,6 +467,7 @@ function Home({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
                       <th>Detail Permintaan</th>
                       <th>Nama Solver</th>
                       <th>CP Solver</th>
+                      <th>Actions</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -480,6 +497,7 @@ function Home({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
                         <td>{data.detailPermintaan}</td>
                         <td>{data.namaSolver}</td>
                         <td>{data.cpSolver}</td>
+                        <td><button onClick={() => handleDeleteClick(data._id)}>X</button></td>
                       </tr>
                     ))}
                   </tbody>
@@ -507,6 +525,12 @@ function Home({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
           onUpdate={handleUpdateSubmission} 
         />
       )}
+
+      <DeleteConfirmationModal
+        show={showDeleteModal}
+        onHide={handleCloseDeleteModal}
+        onConfirm={handleConfirmDelete}
+      />
 
       <footer>
         <span>&copy; 2025 develop with Heart dari Rakyat untuk Rakyat. All rights reserved.</span>

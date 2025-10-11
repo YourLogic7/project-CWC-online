@@ -156,6 +156,25 @@ app.put('/api/submissions/:id', auth, async (req, res) => {
   }
 });
 
+app.delete('/api/submissions/:id', auth, async (req, res) => {
+  try {
+    const submission = await Submission.findById(req.params.id);
+
+    if (!submission) {
+      return res.status(404).json({ msg: 'Submission not found' });
+    }
+
+    // Add authorization check if needed
+
+    await Submission.findByIdAndRemove(req.params.id);
+
+    res.json({ msg: 'Submission removed' });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
