@@ -15,8 +15,8 @@
   background-color: white;
   padding: 20px;
   border-radius: 8px;
-  width: 80%;
-  max-width: 600px;
+  width: 95% !important; /* Increased width */
+  max-width: 1000px !important; /* Increased max-width */
   max-height: 80vh;
   overflow-y: auto;
   position: relative;
