@@ -61,3 +61,35 @@ body.dark-mode .pagination button.active {
 }
 
 /* Overlay style is now in Sidebar.css */
+
+.app-header {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background-color: #f8f9fa; /* Light background for header */
+    border-bottom: 1px solid #e2e8f0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    justify-content: space-between; /* Distribute items */
+    max-width: 60%;
+    margin-left: 0;
+    margin-right: auto;
+  }
+  
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #333; /* Dark color for text */
+  }
+  
+  .user-info svg {
+    width: 24px;
+    height: 24px;
+  }
+  
+  /* Dark Mode styles for user info */
+  body.dark-mode .user-info {
+    color: var(--text-dark); /* Light color for text in dark mode */
+  }

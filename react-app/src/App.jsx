@@ -82,7 +82,7 @@ function App() {
             path="/dashboard"
             element={
               isAuthenticated && user?.role === 'Team Leader' ? (
-                <Dashboard toggleSidebar={toggleSidebar} isDarkMode={isDarkMode} toggleDarkMode={() => setIsDarkMode(prevMode => !prevMode)} />
+                <Dashboard toggleSidebar={toggleSidebar} user={user} isDarkMode={isDarkMode} toggleDarkMode={() => setIsDarkMode(prevMode => !prevMode)} />
               ) : (
                 <Navigate to="/" />
               )
@@ -97,7 +97,7 @@ function App() {
           <Route
             path="/performance"
             element={
-              isAuthenticated ? <Performance toggleSidebar={toggleSidebar} isDarkMode={isDarkMode} toggleDarkMode={() => setIsDarkMode(prevMode => !prevMode)} /> : <Navigate to="/login" />
+              isAuthenticated ? <Performance toggleSidebar={toggleSidebar} user={user} isDarkMode={isDarkMode} toggleDarkMode={() => setIsDarkMode(prevMode => !prevMode)} /> : <Navigate to="/login" />
             }
           />
         </Routes>

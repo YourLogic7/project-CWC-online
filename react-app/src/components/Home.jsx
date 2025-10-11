@@ -197,7 +197,7 @@ function Home({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
 
   return (
     <div className="home-container">
-      <Header toggleSidebar={toggleSidebar} isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
+      <Header toggleSidebar={toggleSidebar} user={user} isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
       <h1 id="judul-di-luhur">Generator Updatan</h1>
       <form id="myForm">
 
@@ -217,6 +217,7 @@ function Home({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
         </section>
         
         <hr />
+        <br />
 
         <section id="headline-layanan">
           <div>
@@ -270,6 +271,7 @@ function Home({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
 
         </section>
         <hr />
+        <br />
 
         <section id="pengecekan-jabatan">
           <div>
@@ -300,6 +302,7 @@ function Home({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
           <input type="checkbox" id="via-grup" name="grup" value="via-grup" checked={viaGrup} onChange={handleCheckboxChange} />
           <label id="tulisanGrup" htmlFor="grup">Via grup <span style={{ fontSize: '15px', color: 'red' }}>(Di pilih kalo kordinasi via Grup)</span></label><br />
           <hr />
+          <br />
           {/* Pilihan Radio Button */}
 
 
@@ -329,6 +332,7 @@ function Home({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
           )}
         </section>
         <hr />
+        <br />
         <section id="carring-jam">
           <div>
             <label htmlFor="carring">Hasil Carring:</label>

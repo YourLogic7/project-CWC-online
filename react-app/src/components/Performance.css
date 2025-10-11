@@ -6,32 +6,36 @@
   
   .performance-header {
     margin-bottom: 2rem;
-    text-align: center;
+    text-align: left;
   }
   
   .stats-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: 1.5rem;
     margin-bottom: 2rem;
+    justify-content: flex-start;
+    max-width: 60%;
+    margin-left: 0;
+    margin-right: auto;
   }
   
   .stat-card {
     background-color: var(--card-background-color);
-    padding: 1.5rem;
+    padding: 1rem;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    text-align: left;
   }
   
   .stat-card h2 {
     margin-top: 0;
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: var(--card-header-color);
   }
   
   .stat-card p {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: bold;
     margin: 0.5rem 0 0;
   }

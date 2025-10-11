@@ -3,7 +3,7 @@ import axios from 'axios';
 import Header from './Header';
 import './Dashboard.css'; // Import the new CSS file
 
-function Dashboard({ toggleSidebar, isDarkMode, toggleDarkMode }) {
+function Dashboard({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
   const [submissions, setSubmissions] = useState([]);
   const [stats, setStats] = useState({ total: 0, average: 0, userCounts: {} });
   const [userList, setUserList] = useState([]);
@@ -65,7 +65,7 @@ function Dashboard({ toggleSidebar, isDarkMode, toggleDarkMode }) {
 
   return (
     <div className="dashboard-container">
-      <Header toggleSidebar={toggleSidebar} isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
+      <Header toggleSidebar={toggleSidebar} user={user} isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
       <div className="dashboard-header">
         <h1>Dashboard</h1>
         <div className="filter-container">
