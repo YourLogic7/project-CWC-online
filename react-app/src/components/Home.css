@@ -92,6 +92,7 @@
   width: 100%;
   border-collapse: collapse;
   margin-top: 1rem;
+  border: 1px solid var(--border-color); /* Added thin border */
 }
 
 .data-table th,
@@ -115,7 +116,7 @@ body.dark-mode .data-table tbody tr:hover {
 
 .data-table th {
   font-weight: bold;
-  background-color: var(--table-header-background-color);
+  background-color: var(--table-header-background-light);
 }
 
 .data-table tbody tr:hover {
