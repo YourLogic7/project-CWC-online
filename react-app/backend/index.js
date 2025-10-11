@@ -133,6 +133,29 @@ app.get('/api/submissions', auth, async (req, res) => {
   }
 });
 
+app.put('/api/submissions/:id', auth, async (req, res) => {
+  try {
+    const submission = await Submission.findById(req.params.id);
+
+    if (!submission) {
+      return res.status(404).json({ msg: 'Submission not found' });
+    }
+
+    // Add authorization check if needed, e.g., allow only owner or admin to update
+
+    const updatedSubmission = await Submission.findByIdAndUpdate(
+      req.params.id,
+      { $set: req.body },
+      { new: true }
+    );
+
+    res.json(updatedSubmission);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));

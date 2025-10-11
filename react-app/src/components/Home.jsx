@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Header from './Header';
+import EditModal from './EditModal';
 import axios from 'axios';
 import * as XLSX from 'xlsx';
 import Papa from 'papaparse';
@@ -39,6 +40,25 @@ function Home({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [searchTerm, setSearchTerm] = useState('');
+  const [showModal, setShowModal] = useState(false);
+  const [selectedSubmission, setSelectedSubmission] = useState(null);
+
+  const handleRowClick = (submission) => {
+    setSelectedSubmission(submission);
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setSelectedSubmission(null);
+  };
+
+  const handleUpdateSubmission = (updatedSubmission) => {
+    const updatedData = submittedData.map(item => 
+      item._id === updatedSubmission._id ? updatedSubmission : item
+    );
+    setSubmittedData(updatedData);
+  };
 
   useEffect(() => {
     fetchSubmissions();
@@ -441,8 +461,8 @@ function Home({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
                         <td>{data.perner}</td>
                         <td>{data.headline}</td>
                         <td>{data.layanan}</td>
-                        <td>{data.dsc}</td>
-                        <td>{data.insera}</td>
+                        <td onClick={() => handleRowClick(data)} style={{cursor: 'pointer'}}>{data.dsc}</td>
+                        <td onClick={() => handleRowClick(data)} style={{cursor: 'pointer'}}>{data.insera}</td>
                         <td>{data.pelanggan}</td>
                         <td>{data.cp}</td>
                         <td>{data.resume}</td>
@@ -477,6 +497,15 @@ function Home({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
             </div>
           )}
         </section>
+      )}
+
+      {showModal && (
+        <EditModal 
+          show={showModal} 
+          onHide={handleCloseModal} 
+          data={selectedSubmission}
+          onUpdate={handleUpdateSubmission} 
+        />
       )}
 
       <footer>
