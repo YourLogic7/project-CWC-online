@@ -122,7 +122,8 @@ body.dark-mode .pagination button.active {
     color: white;
     padding: 0.5rem 1rem;
     border-radius: 5px;
-    margin-left: 1rem;
+    margin-left: 0.7rem;
+    margin-bottom: 17px; /* Added margin-bottom */
   }
 
   .logout-button:hover {
