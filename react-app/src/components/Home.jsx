@@ -46,6 +46,16 @@ function Home({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [submissionToDelete, setSubmissionToDelete] = useState(null);
 
+  const handleRowClick = (submission) => {
+    setSelectedSubmission(submission);
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setSelectedSubmission(null);
+  };
+
   const handleDeleteClick = (submissionId) => {
     setSubmissionToDelete(submissionId);
     setShowDeleteModal(true);

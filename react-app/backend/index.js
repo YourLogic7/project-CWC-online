@@ -166,7 +166,7 @@ app.delete('/api/submissions/:id', auth, async (req, res) => {
 
     // Add authorization check if needed
 
-    await Submission.findByIdAndRemove(req.params.id);
+    await Submission.findByIdAndDelete(req.params.id);
 
     res.json({ msg: 'Submission removed' });
   } catch (err) {
