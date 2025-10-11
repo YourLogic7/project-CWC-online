@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaSun, FaMoon } from 'react-icons/fa'; // Import icons
 
 const HamburgerIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -15,16 +16,20 @@ const PersonIcon = () => (
   </svg>
 );
 
-function Header({ toggleSidebar, user }) {
+function Header({ toggleSidebar, user, isDarkMode, toggleDarkMode, onLogout }) { // Added new props
   return (
     <header className="app-header">
       <button onClick={toggleSidebar} className="sidebar-toggle">
         <HamburgerIcon />
       </button>
       {user && (
-        <div className="user-info">
-          <PersonIcon />
-          <span>Hallo {user.nama}</span>
+        <div className="user-controls"> {/* New div to group user-related controls */}
+          <button onClick={toggleDarkMode} className="dark-mode-toggle">
+            {isDarkMode ? <FaSun /> : <FaMoon />} {/* Conditional icon rendering */}
+          </button>
+          <PersonIcon /> {/* Person icon */}
+          <span>Hallo {user.nama}</span> {/* Username text */}
+          <button onClick={onLogout} className="logout-button">Logout</button> {/* Logout button */}
         </div>
       )}
     </header>

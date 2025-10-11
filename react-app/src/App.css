@@ -65,6 +65,7 @@ body.dark-mode .pagination button.active {
 /* Overlay style is now in Sidebar.css */
 
 .app-header {
+    --header-icon-size: 1.5rem; /* Define variable */
     display: flex;
     align-items: center;
     padding: 1rem;
@@ -76,19 +77,59 @@ body.dark-mode .pagination button.active {
     justify-content: space-between; /* Distribute items */
   }
   
-  .user-info {
+  .user-controls {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    color: #333; /* Dark color for text */
+    gap: 1rem; /* Increased gap */
   }
-  
-  .user-info svg {
-    width: 24px;
-    height: 24px;
+
+  .user-controls span {
+    white-space: nowrap; /* Prevent text wrapping */
+    font-size: var(--header-icon-size); /* Use variable */
+  }
+
+  .user-controls svg {
+    width: var(--header-icon-size) !important;
+    height: var(--header-icon-size) !important;
+  }
+
+  .dark-mode-toggle {
+    background: none !important;
+    border: none;
+    color: #333;
+    font-size: var(--header-icon-size); /* Use variable */
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+    margin-right: 0.5rem; /* Added margin-right */
+  }
+
+  .dark-mode-toggle:hover {
+    background-color: transparent; /* Changed to transparent */
+  }
+
+  body.dark-mode .dark-mode-toggle {
+    color: var(--text-dark);
+  }
+
+  body.dark-mode .dark-mode-toggle:hover {
+    background-color: transparent; /* Changed to transparent */
+  }
+
+  .logout-button {
+    background-color: #dc3545;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    margin-left: 1rem;
+  }
+
+  .logout-button:hover {
+    background-color: #c82333;
   }
   
   /* Dark Mode styles for user info */
-  body.dark-mode .user-info {
+  body.dark-mode .user-controls {
     color: var(--text-dark); /* Light color for text in dark mode */
   }

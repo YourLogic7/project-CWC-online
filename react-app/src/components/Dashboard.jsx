@@ -275,7 +275,7 @@ function Dashboard({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
                   <td>{data.detailPermintaan}</td>
                   <td>{data.namaSolver}</td>
                   <td>{data.cpSolver}</td>
-                  <td><button onClick={() => handleDeleteClick(data._id)} style={{ color: '#fa3232', fontSize: '1rem' }}>Delete data</button></td> {/* Added Delete button */}
+                  <td><button onClick={() => handleDeleteClick(data._id)} style={{ color: '#fa3232', fontSize: '1.2rem' }}>Delete data</button></td> {/* Added Delete button */}
                 </tr>
               ))}
             </tbody>
