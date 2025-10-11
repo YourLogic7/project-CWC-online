@@ -7,6 +7,20 @@
   flex-grow: 1;
   padding: 1.5rem;
   transition: margin-left 0.3s ease-in-out;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+@media (max-width: 1024px) {
+  .main-content {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    max-width: 95%;
+  }
 }
 
 .app-container.sidebar-open .main-content {
@@ -72,9 +86,6 @@ body.dark-mode .pagination button.active {
     top: 0;
     z-index: 1000;
     justify-content: space-between; /* Distribute items */
-    max-width: 60%;
-    margin-left: 0;
-    margin-right: auto;
   }
   
   .user-info {
