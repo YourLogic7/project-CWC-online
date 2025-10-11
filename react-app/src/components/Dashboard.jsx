@@ -3,6 +3,7 @@ import axios from 'axios';
 import Header from './Header';
 import * as XLSX from 'xlsx';
 import Papa from 'papaparse';
+import DeleteConfirmationModal from './DeleteConfirmationModal';
 import './Dashboard.css';
 
 function Dashboard({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
@@ -16,6 +17,8 @@ function Dashboard({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
   const [endDate, setEndDate] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [submissionToDelete, setSubmissionToDelete] = useState(null);
 
   useEffect(() => {
     fetchSubmissions();
@@ -120,6 +123,29 @@ function Dashboard({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
     }
   };
 
+  const handleDeleteClick = (submissionId) => {
+    setSubmissionToDelete(submissionId);
+    setShowDeleteModal(true);
+  };
+
+  const handleCloseDeleteModal = () => {
+    setShowDeleteModal(false);
+    setSubmissionToDelete(null);
+  };
+
+  const handleConfirmDelete = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/submissions/${submissionToDelete}`, {
+        headers: { 'x-auth-token': token },
+      });
+      setSubmissions(submissions.filter(item => item._id !== submissionToDelete)); // Update submissions state
+      handleCloseDeleteModal();
+    } catch (error) {
+      console.error('Error deleting submission:', error);
+    }
+  };
+
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredSubmissions.slice(indexOfFirstItem, indexOfLastItem);
@@ -220,6 +246,7 @@ function Dashboard({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
                 <th>Detail Permintaan</th>
                 <th>Nama Solver</th>
                 <th>CP Solver</th>
+                <th>Actions</th> {/* Added Actions column */}
               </tr>
             </thead>
             <tbody>
@@ -248,6 +275,7 @@ function Dashboard({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
                   <td>{data.detailPermintaan}</td>
                   <td>{data.namaSolver}</td>
                   <td>{data.cpSolver}</td>
+                  <td><button onClick={() => handleDeleteClick(data._id)} style={{ color: '#f20202' }}>Delete data</button></td> {/* Added Delete button */}
                 </tr>
               ))}
             </tbody>
@@ -263,6 +291,11 @@ function Dashboard({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
           <button onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))} disabled={currentPage === totalPages}>Next</button>
         </div>
       </div>
+      <DeleteConfirmationModal
+        show={showDeleteModal}
+        onHide={handleCloseDeleteModal}
+        onConfirm={handleConfirmDelete}
+      />
     </div>
   );
 }

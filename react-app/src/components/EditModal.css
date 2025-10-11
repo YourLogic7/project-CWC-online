@@ -23,25 +23,29 @@
 }
 
 body.dark-mode .modal-content {
-  background-color: var(--card-background-dark);
+  color: #fa2a2a; /* Text color for dark mode */
+  background-color: #6b6e6d; /* Added background color */
 }
 
-body.dark-mode .modal-field p {
-  color: var(--text-light); /* Dark color for text in dark mode when not editing */
+body.dark-mode .modal-field label {
+  color: #edebeb; /* Label color for dark mode */
 }
 
-body.dark-mode .dark-mode-dark-text {
-  color: var(--text-light); /* Dark color for text in dark mode when not editing */
+body.dark-mode .modal-header-title {
+  background-color: #3a3f44; /* A slightly different dark shade */
+  color: var(--text-dark); /* Light text for contrast */
+  padding: 10px;
+  border-radius: 8px 8px 0 0; /* Rounded top corners */
+  margin: -20px -20px 20px -20px; /* Adjust to fill the top of the modal */
 }
 
-.close-button {
+.modal-actions-top {
   position: absolute;
   top: 10px;
   right: 10px;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
+  display: flex;
+  gap: 10px;
+  z-index: 10; /* Ensure buttons are above other content */
 }
 
 .modal-body {
@@ -63,11 +67,4 @@ body.dark-mode .dark-mode-dark-text {
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
-}
-
-.modal-footer {
-  margin-top: 20px;
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
 }

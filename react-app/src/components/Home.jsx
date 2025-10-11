@@ -512,7 +512,7 @@ function Home({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
                         <td>{data.detailPermintaan}</td>
                         <td>{data.namaSolver}</td>
                         <td>{data.cpSolver}</td>
-                        <td><button onClick={() => handleDeleteClick(data._id)}>X</button></td>
+                        <td><button onClick={() => handleDeleteClick(data._id)} style={{ color: '#f20202' }}>Delete data</button></td>
                       </tr>
                     ))}
                   </tbody>

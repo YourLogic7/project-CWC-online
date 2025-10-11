@@ -8,6 +8,7 @@ function EditModal({ show, onHide, data, onUpdate }) {
 
   useEffect(() => {
     setEditedData(data);
+    setIsEditing(false); // Reset isEditing when data changes
   }, [data]);
 
   if (!show) {
@@ -33,7 +34,7 @@ function EditModal({ show, onHide, data, onUpdate }) {
         headers: { 'x-auth-token': token },
       });
       onUpdate(editedData);
-      setIsEditing(false);
+      setIsEditing(false); // Set to false after saving
       onHide();
     } catch (error) {
       console.error('Error updating submission:', error);
@@ -43,8 +44,16 @@ function EditModal({ show, onHide, data, onUpdate }) {
   return (
     <div className="modal-overlay">
       <div className="modal-content">
-        <h2>Edit Submission</h2>
-        <button className="close-button" onClick={onHide}>X</button>
+        <h2 className="modal-header-title">Edit Submission</h2>
+        <div className="modal-actions-top"> {/* New div for buttons */}
+          {isEditing ? (
+            <button onClick={handleSave}>Save</button>
+          ) : (
+            <button onClick={handleEditToggle}>Edit</button>
+          )}
+          <button onClick={onHide}>Close</button>
+        </div>
+        {/* Removed <button className="close-button" onClick={onHide}>X</button> */}
         <div className="modal-body">
           {Object.keys(editedData).map((key) => {
             if (key === '_id' || key === 'user' || typeof editedData[key] === 'object') return null;
@@ -71,14 +80,7 @@ function EditModal({ show, onHide, data, onUpdate }) {
             </div>
           )}
         </div>
-        <div className="modal-footer">
-          {isEditing ? (
-            <button onClick={handleSave}>Save</button>
-          ) : (
-            <button onClick={handleEditToggle}>Edit</button>
-          )}
-          <button onClick={onHide}>Close</button>
-        </div>
+        {/* Removed modal-footer */}
       </div>
     </div>
   );
