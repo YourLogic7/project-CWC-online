@@ -65,7 +65,7 @@ body.dark-mode .pagination button.active {
 /* Overlay style is now in Sidebar.css */
 
 .app-header {
-    --header-icon-size: 1.5rem; /* Define variable */
+    --header-icon-size: 1rem; /* Define variable */
     display: flex;
     align-items: center;
     padding: 1rem;
