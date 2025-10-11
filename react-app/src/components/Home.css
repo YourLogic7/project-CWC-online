@@ -73,28 +73,17 @@
 /* Submitted Data Table Styles (kept from previous styling) */
 .submitted-data-container {
   margin-top: 3rem;
-  background-color: var(--card-background);
+  background-color: var(--card-background-color);
   padding: 1.5rem;
   border-radius: 8px;
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   max-width: 100%;
   margin-left: 0;
   margin-right: auto;
 }
 
-body.dark-mode .submitted-data-container {
-  background-color: var(--card-background-dark);
-}
-
-.submitted-data-container h2 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-}
-
 .table-wrapper {
-  overflow-x: auto;
-  overflow-y: auto;
+  overflow: auto;
   max-height: 500px;
   width: 100%;
 }
@@ -108,17 +97,12 @@ body.dark-mode .submitted-data-container {
 .data-table th,
 .data-table td {
   padding: 0.75rem 1rem;
-  text-align: left;
   border-bottom: 1px solid var(--border-color);
-  font-size: 0.875rem;
+  text-align: left;
 }
 
 body.dark-mode .data-table td {
   color: #a0aec0; /* A darker shade for dark mode */
-}
-
-body.dark-mode .data-table thead {
-  background-color: #2d3748;
 }
 
 body.dark-mode .data-table th {
@@ -129,17 +113,13 @@ body.dark-mode .data-table tbody tr:hover {
   background-color: #4a5568;
 }
 
-.data-table thead {
-  background-color: #f7fafc;
-}
-
 .data-table th {
-  font-weight: 600;
-  color: #4a5568;
+  font-weight: bold;
+  background-color: var(--table-header-background-color);
 }
 
 .data-table tbody tr:hover {
-  background-color: #f7fafc;
+  background-color: var(--table-row-hover-color);
 }
 
 #hasil-akhir {
@@ -150,4 +130,14 @@ body.dark-mode .data-table tbody tr:hover {
   border: 1px solid var(--border-color);
   white-space: pre-wrap;
   font-family: monospace;
+}
+
+body.dark-mode #hasil-akhir {
+  background-color: #2d3748;
+  color: #a0aec0;
+  border-color: #4a5568;
+}
+
+.hidden-on-screen {
+  display: none;
 }

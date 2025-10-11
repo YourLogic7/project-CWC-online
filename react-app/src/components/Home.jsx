@@ -189,8 +189,14 @@ function Home({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
   };
 
   const copyToClipboard = async () => {
-    // ... (clipboard logic remains the same)
+    const textToCopy = result.dsc + result.insera;
+    const tempElement = document.createElement('div');
+    tempElement.innerHTML = textToCopy;
+    const text = tempElement.innerText;
+
     try {
+      await navigator.clipboard.writeText(text);
+      alert('Teks berhasil disalin!');
       const token = localStorage.getItem('token');
       await axios.post(`${import.meta.env.VITE_API_URL}/api/submissions`, { ...formData, radioChoice, viaGrup }, {
         headers: { 'x-auth-token': token },
@@ -199,6 +205,7 @@ function Home({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
       resetForm();
     } catch (err) {
       console.error(err);
+      alert('Gagal menyalin teks.');
     }
   };
 
@@ -451,12 +458,11 @@ function Home({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
                   />
                 </div>
                 <table className="data-table">
-                  <thead>
+                  <thead className="hidden-on-screen">
                     <tr>
                       <th>Nama</th>
                       <th>Timestamp</th>
                       <th>Perner</th>
-                      <th>Headline</th>
                       <th>Layanan</th>
                       <th>DSC</th>
                       <th>INSERA</th>
@@ -486,7 +492,6 @@ function Home({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
                         <td>{data.user.nama}</td>
                         <td>{new Date(data.createdAt).toLocaleString()}</td>
                         <td>{data.perner}</td>
-                        <td>{data.headline}</td>
                         <td>{data.layanan}</td>
                         <td onClick={() => handleRowClick(data)} style={{cursor: 'pointer'}}>{data.dsc}</td>
                         <td onClick={() => handleRowClick(data)} style={{cursor: 'pointer'}}>{data.insera}</td>
