@@ -77,15 +77,9 @@
   padding: 1.5rem;
   border-radius: 8px;
   box-shadow: var(--shadow-md);
-  max-width: 95%;
+  max-width: 100%;
   margin-left: 0;
   margin-right: auto;
-}
-
-@media (max-width: 768px) {
-  .submitted-data-container {
-    max-width: 95%;
-  }
 }
 
 body.dark-mode .submitted-data-container {
