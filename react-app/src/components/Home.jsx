@@ -38,6 +38,7 @@ function Home({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
   const [submittedData, setSubmittedData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     fetchSubmissions();
@@ -48,14 +49,27 @@ function Home({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
     setCurrentPage(1); // Reset to first page when items per page changes
   };
 
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+    setCurrentPage(1); // Reset to first page when search term changes
+  };
+
   // Filter data by today's date
-  const filteredSubmissions = submittedData.filter(submission => {
+  const todayFilteredSubmissions = submittedData.filter(submission => {
     const submissionDate = new Date(submission.createdAt);
     const today = new Date();
     return (
       submissionDate.getDate() === today.getDate() &&
       submissionDate.getMonth() === today.getMonth() &&
       submissionDate.getFullYear() === today.getFullYear()
+    );
+  });
+
+  // Further filter by search term
+  const filteredSubmissions = todayFilteredSubmissions.filter(submission => {
+    const searchLower = searchTerm.toLowerCase();
+    return Object.values(submission).some(value =>
+      String(value).toLowerCase().includes(searchLower)
     );
   });
 
@@ -381,6 +395,15 @@ function Home({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
                 </div>
               </div>
               <div className="table-wrapper">
+                <div style={{ marginBottom: '1rem' }}>
+                  <input
+                    type="text"
+                    placeholder="Search..."
+                    value={searchTerm}
+                    onChange={handleSearchChange}
+                    style={{ padding: '0.5rem', width: '100%', maxWidth: '300px' }}
+                  />
+                </div>
                 <table className="data-table">
                   <thead>
                     <tr>

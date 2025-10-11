@@ -11,6 +11,7 @@ function Performance({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
   const [stats, setStats] = useState({ total: 0, average: 0 });
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     fetchSubmissions();
@@ -48,6 +49,18 @@ function Performance({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
     setCurrentPage(1); // Reset to first page when items per page changes
   };
 
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+    setCurrentPage(1); // Reset to first page when search term changes
+  };
+
+  const filteredSubmissions = submissions.filter(submission => {
+    const searchLower = searchTerm.toLowerCase();
+    return Object.values(submission).some(value =>
+      String(value).toLowerCase().includes(searchLower)
+    );
+  });
+
   const handleExport = (format) => {
     const dataToExport = submissions.map(data => {
       const { user, createdAt, ...rest } = data;
@@ -77,8 +90,8 @@ function Performance({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
   // Derived state for pagination
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = submissions.slice(indexOfFirstItem, indexOfLastItem);
-  const totalPages = Math.ceil(submissions.length / itemsPerPage);
+  const currentItems = filteredSubmissions.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(filteredSubmissions.length / itemsPerPage);
   const pageNumbers = [];
   for (let i = 1; i <= totalPages; i++) {
     pageNumbers.push(i);
@@ -122,6 +135,15 @@ function Performance({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
                 <option value={submissions.length}>All</option>
               </select>
             </div>
+          </div>
+          <div style={{ marginBottom: '1rem' }}>
+            <input
+              type="text"
+              placeholder="Search..."
+              value={searchTerm}
+              onChange={handleSearchChange}
+              style={{ padding: '0.5rem', width: '100%', maxWidth: '300px' }}
+            />
           </div>
           <div className="table-wrapper">
             <table className="data-table">

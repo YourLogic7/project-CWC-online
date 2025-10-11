@@ -8,6 +8,7 @@ function Dashboard({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
   const [stats, setStats] = useState({ total: 0, average: 0, userCounts: {} });
   const [userList, setUserList] = useState([]);
   const [selectedUser, setSelectedUser] = useState('all');
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     fetchSubmissions();
@@ -63,6 +64,21 @@ function Dashboard({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
     setSelectedUser(e.target.value);
   };
 
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const filteredUserSubmissions = submissions.filter(submission => {
+    const searchLower = searchTerm.toLowerCase();
+    return Object.values(submission).some(value =>
+      String(value).toLowerCase().includes(searchLower)
+    );
+  });
+
+  const displayedSubmissions = selectedUser === 'all' 
+    ? filteredUserSubmissions 
+    : filteredUserSubmissions.filter(submission => submission.user?.nama === selectedUser);
+
   return (
     <div className="dashboard-container">
       <Header toggleSidebar={toggleSidebar} user={user} isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
@@ -100,6 +116,15 @@ function Dashboard({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
       {selectedUser === 'all' && (
         <div className="table-container">
           <h2>Submissions by User</h2>
+          <div style={{ marginBottom: '1rem' }}>
+            <input
+              type="text"
+              placeholder="Search..."
+              value={searchTerm}
+              onChange={handleSearchChange}
+              style={{ padding: '0.5rem', width: '100%', maxWidth: '300px' }}
+            />
+          </div>
           <div className="table-wrapper">
             <table className="data-table">
               <thead>
