@@ -42,6 +42,9 @@ function Register({ onRegister }) {
   return (
     <div className="auth-container">
       <div className="auth-card">
+        <div className="auth-logo">
+          <img src="/src/components/icon/logo.png" alt="logo" />
+        </div>
         <h2>Sign Up</h2>
         <form onSubmit={handleSubmit} className="auth-form">
           <div className="form-field">
