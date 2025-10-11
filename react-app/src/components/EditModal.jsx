@@ -46,21 +46,30 @@ function EditModal({ show, onHide, data, onUpdate }) {
         <h2>Edit Submission</h2>
         <button className="close-button" onClick={onHide}>X</button>
         <div className="modal-body">
-          {Object.keys(editedData).map((key) => (
-            <div key={key} className="modal-field">
-              <label>{key}</label>
-              {isEditing ? (
-                <input
-                  type="text"
-                  name={key}
-                  value={editedData[key]}
-                  onChange={handleChange}
-                />
-              ) : (
-                <p>{editedData[key]}</p>
-              )}
+          {Object.keys(editedData).map((key) => {
+            if (key === '_id' || key === 'user' || typeof editedData[key] === 'object') return null;
+            return (
+              <div key={key} className="modal-field">
+                <label>{key}</label>
+                {isEditing ? (
+                  <input
+                    type="text"
+                    name={key}
+                    value={editedData[key]}
+                    onChange={handleChange}
+                  />
+                ) : (
+                  <p>{editedData[key]}</p>
+                )}
+              </div>
+            )
+          })}
+          {editedData.user && (
+            <div className="modal-field">
+              <label>User</label>
+              <p>{editedData.user.nama}</p>
             </div>
-          ))}
+          )}
         </div>
         <div className="modal-footer">
           {isEditing ? (
