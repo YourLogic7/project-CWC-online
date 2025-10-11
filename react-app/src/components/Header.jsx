@@ -21,7 +21,7 @@ function Header({ toggleSidebar, user, isDarkMode, toggleDarkMode, onLogout }) {
           <button onClick={toggleDarkMode} className="dark-mode-toggle">
             {isDarkMode ? <FaSun /> : <FaMoon />} {/* Conditional icon rendering */}
           </button>
-          <span>Hallo {user.nama}</span> {/* Username text */}
+          <span>Hallo, {user.nama}</span> {/* Username text */}
           <button onClick={onLogout} className="logout-button">Logout</button> {/* Logout button */}
         </div>
       )}
