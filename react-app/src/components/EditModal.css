@@ -22,6 +22,18 @@
   position: relative;
 }
 
+body.dark-mode .modal-content {
+  background-color: var(--card-background-dark);
+}
+
+body.dark-mode .modal-field p {
+  color: var(--text-light); /* Dark color for text in dark mode when not editing */
+}
+
+body.dark-mode .dark-mode-dark-text {
+  color: var(--text-light); /* Dark color for text in dark mode when not editing */
+}
+
 .close-button {
   position: absolute;
   top: 10px;
