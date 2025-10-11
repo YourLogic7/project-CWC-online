@@ -195,7 +195,7 @@ function Dashboard({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
             />
           </div>
           <table className="data-table">
-            <thead className="hidden-on-screen">
+            <thead>
               <tr>
                 <th>Nama</th>
                 <th>Timestamp</th>
