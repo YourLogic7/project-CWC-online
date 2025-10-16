@@ -98,13 +98,13 @@ function App() {
               isAuthenticated ? <Home toggleSidebar={toggleSidebar} user={user} isDarkMode={isDarkMode} toggleDarkMode={() => setIsDarkMode(prevMode => !prevMode)} onLogout={handleLogout} /> : <Navigate to="/login" />
             }
           />
-          <Route
-            path="/performance"
-            element={
-              isAuthenticated ? <Performance toggleSidebar={toggleSidebar} user={user} isDarkMode={isDarkMode} toggleDarkMode={() => setIsDarkMode(prevMode => !prevMode)} onLogout={handleLogout} /> : <Navigate to="/login" />
-            }
-          />
-        </Routes>
+                      <Route
+                        path="/performance"
+                        element={
+                          isAuthenticated ? <Performance toggleSidebar={toggleSidebar} user={user} isDarkMode={isDarkMode} toggleDarkMode={() => setIsDarkMode(prevMode => !prevMode)} onLogout={handleLogout} /> : <Navigate to="/login" />
+                        }
+                      />
+                      <Route path="*" element={<Navigate to="/" />} />        </Routes>
       </div>
       {isSidebarOpen && <div className="overlay" onClick={toggleSidebar}></div>}
     </div>
