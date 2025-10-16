@@ -86,7 +86,7 @@ function Login({ onLogin }) {
         </form>
         <div className="auth-footer">
           Don't have an account? <Link to="/register">Sign Up</Link>
-        }
+        </div>
       </div>
     </div>
   );
