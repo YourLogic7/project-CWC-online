@@ -45,7 +45,7 @@ function Login({ onLogin }) {
     <div className="auth-container">
       <div className="auth-card">
         <div className="auth-logo">
-          <img src="/src/components/icon/logo.png" alt="logo" />
+          <img src="/logo.png" alt="logo" />
         </div>
         <h2>Login</h2>
         <form onSubmit={handleSubmit} className="auth-form">
@@ -86,7 +86,7 @@ function Login({ onLogin }) {
         </form>
         <div className="auth-footer">
           Don't have an account? <Link to="/register">Sign Up</Link>
-        </div>
+        }
       </div>
     </div>
   );
