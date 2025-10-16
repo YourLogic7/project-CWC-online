@@ -13,6 +13,7 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [isDarkMode, setIsDarkMode] = useState(() => {
     const savedMode = localStorage.getItem('darkMode');
     return savedMode === 'true' ? true : false;
@@ -41,6 +42,7 @@ function App() {
         localStorage.removeItem('token');
       }
     }
+    setLoading(false);
   }, []);
 
   const handleLogin = () => {
@@ -69,7 +71,9 @@ function App() {
     setSidebarOpen(!isSidebarOpen);
   };
 
-
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className={`app-container ${isSidebarOpen ? 'sidebar-open' : ''}`}>
