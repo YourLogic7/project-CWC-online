@@ -6,7 +6,7 @@ import Papa from 'papaparse';
 import DeleteConfirmationModal from './DeleteConfirmationModal';
 import './Dashboard.css';
 
-function Dashboard({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
+function Dashboard({ toggleSidebar, user, isDarkMode, toggleDarkMode, onLogout }) {
   const [submissions, setSubmissions] = useState([]);
   const [filteredSubmissions, setFilteredSubmissions] = useState([]);
   const [stats, setStats] = useState({ total: 0, average: 0, userCounts: {} });
@@ -154,7 +154,7 @@ function Dashboard({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
 
   return (
     <div className="dashboard-container">
-      <Header toggleSidebar={toggleSidebar} user={user} isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
+      <Header toggleSidebar={toggleSidebar} user={user} isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} onLogout={onLogout} />
       <div className="dashboard-header">
         <h1>Dashboard</h1>
         <div className="filter-container">

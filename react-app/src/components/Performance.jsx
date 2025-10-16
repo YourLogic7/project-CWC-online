@@ -6,7 +6,7 @@ import Papa from 'papaparse';
 import Header from './Header';
 import './Performance.css';
 
-function Performance({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
+function Performance({ toggleSidebar, user, isDarkMode, toggleDarkMode, onLogout }) {
   const [submissions, setSubmissions] = useState([]);
   const [stats, setStats] = useState({ total: 0, average: 0 });
   const [currentPage, setCurrentPage] = useState(1);
@@ -99,7 +99,7 @@ function Performance({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
 
   return (
     <div className="performance-container">
-      <Header toggleSidebar={toggleSidebar} user={user} isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
+      <Header toggleSidebar={toggleSidebar} user={user} isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} onLogout={onLogout} />
       <div className="performance-header">
         <h1>Performance</h1>
       </div>

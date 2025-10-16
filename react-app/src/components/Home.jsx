@@ -7,7 +7,7 @@ import * as XLSX from 'xlsx';
 import Papa from 'papaparse';
 import './Home.css';
 
-function Home({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
+function Home({ toggleSidebar, user, isDarkMode, toggleDarkMode, onLogout }) {
   const [formData, setFormData] = useState({
     perner: '',
     headline: '',
@@ -264,7 +264,7 @@ function Home({ toggleSidebar, user, isDarkMode, toggleDarkMode }) {
 
   return (
     <div className="home-container">
-      <Header toggleSidebar={toggleSidebar} user={user} isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
+      <Header toggleSidebar={toggleSidebar} user={user} isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} onLogout={onLogout} />
       <h1 id="judul-di-luhur">Generator Updatan</h1>
       <form id="myForm">
 

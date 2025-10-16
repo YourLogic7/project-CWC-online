@@ -77,18 +77,7 @@ function Sidebar({ isOpen, onLogout, toggleSidebar, user, isDarkMode, toggleDark
             </Link>
           </li>
         )}
-        <li>
-          <button onClick={onLogout} className="logout-button">
-            <LogoutIcon />
-            <span>Logout</span>
-          </button>
-        </li>
-        <li className="dark-mode-toggle-container">
-          <button onClick={toggleDarkMode} className="dark-mode-switch">
-            {isDarkMode ? <SunIcon /> : <MoonIcon />}
-            <span>{isDarkMode ? 'Light Mode' : 'Dark Mode'}</span>
-          </button>
-        </li>
+
       </ul>
     </div>
   );
